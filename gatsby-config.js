@@ -6,8 +6,7 @@ module.exports = {
     description: `URTipsDev blog donde explicamos diferentes tips de desarrollo web y movil`,
     siteUrl: `https://urtips.dev/`,
     social: {
-      youtube: `urtipsdev`,
-      twitter: `urtipsdev`,
+      youtube: `UCT49h0K1819qLW4sNiWgvGw`,
     },
   },
   plugins: [
