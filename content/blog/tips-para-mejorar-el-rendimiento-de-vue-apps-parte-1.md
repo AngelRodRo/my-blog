@@ -6,6 +6,8 @@ description: >-
   Les mostraremos 3 tips interesantes acerca de como mejorar el rendimiento de
   tu app usando Vue
 ---
+![](/assets/thumbnail-vuejs.png)
+
 Las optimizaciones son una pieza importante en el desarrollo de tu aplicación, independientemente de la app, siempre se busca que sea lo más rápido y eficaz, rindiendo lo mejor posible. 
 
 Por ello, en este articulo 3 optimizaciones que puedes hacer tus apps ahora mismo.
