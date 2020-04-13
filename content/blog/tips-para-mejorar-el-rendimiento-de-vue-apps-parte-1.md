@@ -20,13 +20,13 @@ En vez de enviar toda nuestra app en un solo archivo javascript bundle al navega
 
 Para usar lazy loading, necesitan hacer **Dynamic Imports**, es decir llamar a los components dinámicamente esta es una función de webpack, además con ello permite hacer el code splitting lo cual hara que tengamos chunks de nuestro bundle principal.
 
-# Functional Components
+## Functional Components
 
 Los componentes funcionales tienen la ventaja de ser mucho más ligeros y con mejor performance que los componentes normales, permitiendo crear instancias más “ligeras” para ser renderizadas en el navegador.
 
 Así mismo estos componentes son conocidos como “tontos” o presentacionales, los cuales son perfectos para mostrar elementos de la UI que no necesitan cambiar en el tiempo. Estos no tienen su propia data, estado, tampoco tienen métodos o incluso una instancia, por lo tanto no se puede usar this y su respectivo ciclo de vida.
 
-# Virtual Collection 
+## Virtual Collection 
 
 Una larga colección de componentes suele ser un problema de performance común ¿Retrasos o uso excesivo de memoria al momento de recorrerlas? 
 
