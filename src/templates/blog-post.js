@@ -5,6 +5,7 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Commento from "../components/commento"
 import { rhythm, scale } from "../utils/typography"
 
 class BlogPostTemplate extends React.Component {
@@ -37,6 +38,8 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
+
+        <Commento />
 
         <ul
           style={{
