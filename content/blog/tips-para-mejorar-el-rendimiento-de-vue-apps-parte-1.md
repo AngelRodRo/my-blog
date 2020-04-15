@@ -85,6 +85,26 @@ export default new Router({
 
 Revisa este [enlace](https://router.vuejs.org/guide/advanced/lazy-loading.html) para mas detalles y configuraciones adicionales.
 
+## Virtual Collection
+
+Una larga colección de componentes suele ser un problema de performance común. ¿Retrasos o uso excesivo de memoria al momento de recorrerlas?
+
+[Virtual Collection](https://github.com/starkwang/vue-virtual-collection), es un paquete de NPM, el cual es una alternativa perfecta para renderizar tu lista de componentes eficientemente. Te permite tener una larga lista de elementos sin retrasos o excesivo uso de memoria.
+
+<iframe src="https://giphy.com/embed/JTDvWICnj8Sc4nW3fC" width="480" height="276" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+
+Aqui les dejo, un ejemplo aplicando su uso por defecto explicado en la documentación:
+
+<iframe
+     src="https://codesandbox.io/embed/gallant-satoshi-z8oxp?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
+     title="gallant-satoshi-z8oxp"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+Para mas detalles visiten su documentación. Super recomendado :D
+
 
 ## Functional Components
 
@@ -132,30 +152,10 @@ Si observamos este [benchmark](https://codesandbox.io/s/vue-stateful-vs-function
 Los tiempos de renderizado de los componentes funcionales son menores a comparación de los componentes stateful.
 
 
-## Virtual Collection
-
-Una larga colección de componentes suele ser un problema de performance común. ¿Retrasos o uso excesivo de memoria al momento de recorrerlas?
-
-[Virtual Collection](https://github.com/starkwang/vue-virtual-collection), es un paquete de NPM, el cual es una alternativa perfecta para renderizar tu lista de componentes eficientemente. Te permite tener una larga lista de elementos sin retrasos o excesivo uso de memoria.
-
-<iframe src="https://giphy.com/embed/JTDvWICnj8Sc4nW3fC" width="480" height="276" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-
-Aqui les dejo, un ejemplo aplicando su uso por defecto explicado en la documentación:
-
-<iframe
-     src="https://codesandbox.io/embed/gallant-satoshi-z8oxp?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
-     title="gallant-satoshi-z8oxp"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
-
-Para mas detalles visiten su documentación. Super recomendado :D
-
 ## References
 
   - [Lazy Loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
   - [Working with functional Vue.js Components](https://markus.oberlehner.net/blog/working-with-functional-vue-components/)
   - [Functional Components](https://alligator.io/vuejs/functional-components/)
-  - [Virtual Coleection](https://github.com/starkwang/vue-virtual-collection)
+  - [Virtual Collection](https://github.com/starkwang/vue-virtual-collection)
 
