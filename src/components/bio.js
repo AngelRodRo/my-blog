@@ -36,6 +36,7 @@ function Bio() {
             <p>
               Escrito por <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
               {` `}
+              <br />
               <a href={`https://youtube.com/channel/${social.youtube}`}>
                 Sigueme en Youtube
               </a>
