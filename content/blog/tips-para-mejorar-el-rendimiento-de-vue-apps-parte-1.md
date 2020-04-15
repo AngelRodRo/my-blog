@@ -20,7 +20,7 @@ En vez de enviar toda nuestra app en un solo archivo bundle javascript al navega
 
 Para usar lazy loading, necesitamos usar **Dynamic Imports (DI)**, es decir llamar a los components dinámicamente. Esta ultima es una funcionalidad de webpack, con la cual permite hacer **Code Splitting** lo que nos permitira tener chunks del bundle de nuestra app.
 
-Haremos un pequeño ejemplo con una aplicación **Open-Source** llamada [Helpet](https://helpet.codenity.org) de nuestros amigos de [Codenity](https://www.codenity.org).
+Haremos un pequeño ejemplo con una aplicación **Open-Source** llamada [Helpet](https://helpet.codenity.org) de nuestros amigos de [Codenity](https://www.codenity.org). Su repositorio lo puedes revisar [aqui](https://github.com/CodenityOrg/helpet-FE)
 
 Un import normal en nuestra rutas se veria asi:
 
@@ -148,7 +148,15 @@ Si observamos este [benchmark](https://codesandbox.io/s/vue-stateful-vs-function
 
 Los tiempos de renderizado de los componentes funcionales son menores a comparación de los componentes stateful.
 
+Aqui otro ejemplo sencillo de componentes funcionales que puedes revisar! 😀
 
+<iframe
+     src="https://codesandbox.io/embed/stateful-vs-functional-components-mfxd4?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:300px; border:0; border-radius: 4px; overflow:hidden;"
+     title="functional-components"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
 
 ## Referencias
 
