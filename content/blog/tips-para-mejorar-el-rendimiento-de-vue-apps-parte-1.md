@@ -22,7 +22,6 @@ Para usar lazy loading, necesitamos usar **Dynamic Imports (DI)**, es decir llam
 
 Haremos un pequeño ejemplo con una aplicación **Open-Source** llamada [Helpet](https://helpet.codenity.org) de nuestros amigos de [Codenity](https://www.codenity.org).
 
-
 Un import normal en nuestra rutas se veria asi:
 
 ```js
@@ -105,12 +104,11 @@ Aqui les dejo, un ejemplo aplicando su uso por defecto explicado en la documenta
 
 Para mas detalles visiten su documentación. Super recomendado :D
 
-
-## Functional Components
+## Componentes funcionales
 
 Los componentes funcionales tienen la ventaja de ser mucho más ligeros y con mejor performance que los componentes normales, permitiendo crear instancias más “ligeras” para ser renderizadas en el navegador.
 
-Así mismo estos componentes son conocidos como **tontos** o presentacionales, los cuales son perfectos para mostrar elementos de la UI que no necesitan manejar el state de Vue. Al ser así, estos no poseen su propia data, state, tampoco tienen métodos o incluso una instancia, por lo tanto no podemos usar *this* o un ciclo de vida.
+Así mismo estos componentes son conocidos como **tontos** o presentacionales, los cuales son perfectos para mostrar elementos de la UI que no necesitan manejar el state de Vue. Al ser así, estos no poseen su propia data, state, tampoco tienen métodos o incluso una instancia, por lo tanto no podemos usar _this_ o un ciclo de vida.
 
 Para usar un componente funcional existe 2 formas:
 
@@ -124,8 +122,7 @@ Con el keyword **functional**
 </template>
 ```
 
-o con la función **render** usando JSX, el cual lo podemos utilizar una vez que instalemos y configuremos este plugin de babel: [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx). JSX nos da la ventaja de usar nuestros componentes de una menara muy similar a como lo manejariamos en **React**, lo cual para los que vienen de alli, les resultara mas familiar ;).
-
+o con la función **render** usando JSX, el cual lo podemos utilizar una vez que instalemos y configuremos este plugin de babel: [babel-plugin-transform-vue-jsx](https://github.com/vuejs/babel-plugin-transform-vue-jsx). JSX nos da la ventaja de usar nuestros componentes de una manera muy similar a como lo manejariamos en **React**, lo cual para los que vienen de alli, les resultara mas familiar ;).
 
 ```js
 <script>
@@ -151,11 +148,9 @@ Si observamos este [benchmark](https://codesandbox.io/s/vue-stateful-vs-function
 
 Los tiempos de renderizado de los componentes funcionales son menores a comparación de los componentes stateful.
 
+## Referencias
 
-## References
-
-  - [Lazy Loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
-  - [Working with functional Vue.js Components](https://markus.oberlehner.net/blog/working-with-functional-vue-components/)
-  - [Functional Components](https://alligator.io/vuejs/functional-components/)
-  - [Virtual Collection](https://github.com/starkwang/vue-virtual-collection)
-
+* [Lazy Loading](https://router.vuejs.org/guide/advanced/lazy-loading.html)
+* [Working with functional Vue.js Components](https://markus.oberlehner.net/blog/working-with-functional-vue-components/)
+* [Functional Components](https://alligator.io/vuejs/functional-components/)
+* [Virtual Collection](https://github.com/starkwang/vue-virtual-collection)
