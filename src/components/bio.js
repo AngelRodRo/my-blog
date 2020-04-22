@@ -11,13 +11,50 @@ import Image from "gatsby-image"
 import styled from "styled-components"
 
 import { rhythm } from "../utils/typography"
+import youtube from "../icons/youtube.svg"
+import github from "../icons/github.svg"
 
 function Bio() {
+
+  const socialLinks = [
+    {
+      imgSrc: youtube,
+      href: "https://www.youtube.com/channel/UCT49h0K1819qLW4sNiWgvGw"
+    },
+    {
+      imgSrc: github,
+      href: "https://github.com/AngelRodRo"
+    }
+  ]
+
+  const SocialLink = props => {
+    const {imgSrc, href} = props;
+    const Link = styled.a`
+      margin: 0px 3px;
+      text-decoration: none;
+      box-shadow: none;
+    `
+
+    return (
+      <Link href={href} >
+        <img width="25" height="25" src={imgSrc} />
+      </Link>
+    )
+  }
+
+  const SocialLinks = socialLinks.map(({imgSrc, href}) =>
+    <SocialLink
+      href={href}
+      imgSrc={imgSrc}
+    />
+  );
+  console.log(SocialLinks)
+
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author } = data.site.siteMetadata
         return (
           <Container>
             <Image
@@ -36,10 +73,11 @@ function Bio() {
             <p>
               Escrito por <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
               {` `}
+              Siguéme en:
               <br />
-              <a href={`https://youtube.com/channel/${social.youtube}`}>
-                Sigueme en Youtube
-              </a>
+            <SocialContainer>
+              {SocialLinks}
+            </SocialContainer>
             </p>
           </Container>
         )
@@ -57,6 +95,9 @@ const bioQuery = graphql`
         }
       }
     }
+
+
+
     site {
       siteMetadata {
         author
@@ -73,4 +114,7 @@ const Container = styled.div`
   display: flex;
 `
 
+const SocialContainer = styled.div`
+  display: flex;
+`
 export default Bio
