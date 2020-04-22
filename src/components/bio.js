@@ -48,7 +48,6 @@ function Bio() {
       imgSrc={imgSrc}
     />
   );
-  console.log(SocialLinks)
 
   return (
     <StaticQuery
