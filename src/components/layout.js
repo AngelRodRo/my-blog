@@ -75,7 +75,7 @@ class Layout extends React.Component {
                   <Toggle
                     checked={theme === 'dark'}
                     onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')} />
-                  <span>Modo oscuro</span>
+                  <span style={{ 'verticalAlign': 'super', 'margin': '0 5px' }}>Modo oscuro</span>
                 </label>
               )}
             </ThemeToggler>
