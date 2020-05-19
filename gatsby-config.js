@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
     // edit below
-    title: `URTipsDev Blog`,
+    title: `PractiDev Blog`,
     author: `Angel Rodriguez`,
-    description: `URTipsDev blog donde explicamos diferentes tips de desarrollo web y movil`,
+    description: `En PractiDev encontraras variados tips de desarrollo web y movil`,
     siteUrl: `https://urtips.dev/`,
     social: {
-      twitter: 'urtipsdev',
+      twitter: 'practidev',
       youtube: `UCT49h0K1819qLW4sNiWgvGw`,
     },
   },
@@ -72,8 +72,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `URTipsDev Blog`,
-        short_name: `URTipsDev`,
+        name: `Practi Blog`,
+        short_name: `PractiDev`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
