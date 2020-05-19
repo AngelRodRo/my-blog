@@ -8,26 +8,30 @@ description: >-
   tus proyectos, servicios, etc. En este pequeña guia te enseñare como usar los
   alias para automatizar todo ese trabajo de una forma sencilla.
 ---
+![](/assets/blur-bright-business-codes-207580.jpg)
+
+
+
 # Pasos a seguir
 
 Las terminales basadas en UNIX tales como la de Linux o MacOS nos permite crear alias a los comandos, de tal forma que podamos encapsular varias comandos en un solo comando.
 
 Para hacer uso de los alias en la terminal deberemos usar la siguiente sintaxis:
 
-```
+```bash
 $ alias shortName="your custom command here" 
 ```
 
 Por ejemplo si quisiéramos usar un comando para acceder a nuestros proyectos web en nuestro servidor, podriamos hacerlo asi:
 
-```
+```bash
 $ alias wp=”cd /var/www/html”
 ```
 
 Para hacer que estos alias sean permanentes debemos hacer algunos pasos adicionales. Debemos modificar alguno de estos archivos, los cuales se inician al momento de cargar nuestra terminal:
 
-\- Bash – **~/.bashrc**\
-- ZSH – **~/.zshrc**
+* Bash – **~/.bashrc**\
+* ZSH – **~/.zshrc**
 
 Eso lo hacemos de la siguiente manera:
 
@@ -47,7 +51,7 @@ De esa manera nuestros cambios se hacen validos, de otra forma tendremos que rea
 
 Puedes ver algunos ejemplos aquí:
 
-\[https://gist.github.com/AngelRodRo/38f8238066622a6fd640f72dffbf8a54](https://gist.github.com/AngelRodRo/38f8238066622a6fd640f72dffbf8a54)
+https://gist.github.com/AngelRodRo/38f8238066622a6fd640f72dffbf8a54
 
 # Conclusión
 
