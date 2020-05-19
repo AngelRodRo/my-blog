@@ -1,5 +1,5 @@
 ---
-path: como-usar-cli-terminal-para-incrementar-productividad
+path: como-usar-cli-terminal-incrementar-productividad
 date: 2020-05-19T20:26:29.595Z
 title: "Cómo usar los CLI alias para incrementar tu productividad \U0001F680"
 description: >-
