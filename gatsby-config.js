@@ -4,7 +4,7 @@ module.exports = {
     title: `PractiDev Blog`,
     author: `Angel Rodriguez`,
     description: `En PractiDev encontraras variados tips de desarrollo web y movil`,
-    siteUrl: `https://urtips.dev/`,
+    siteUrl: `https://practi.dev/`,
     social: {
       twitter: 'practidev',
       youtube: `UCT49h0K1819qLW4sNiWgvGw`,
@@ -87,6 +87,12 @@ module.exports = {
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
+    },
+    {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `practidev`
+      }
     },
   ],
 }

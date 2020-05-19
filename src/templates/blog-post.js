@@ -5,14 +5,19 @@ import { MDXRenderer } from "gatsby-plugin-mdx"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Commento from "../components/commento"
 import { rhythm, scale } from "../utils/typography"
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+
+    let disqusConfig = {
+      identifier: post.id,
+      title: post.title,
+    }
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -39,7 +44,7 @@ class BlogPostTemplate extends React.Component {
         />
         <Bio />
 
-        <Commento />
+        <Disqus config={disqusConfig} />
 
         <ul
           style={{
