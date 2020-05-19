@@ -1,7 +1,7 @@
 ---
 path: como-usar-cli-terminal-para-incrementar-productividad
 date: 2020-05-19T20:26:29.595Z
-title: "Cómo usar los alias CLI alias para incrementar tu productividad \U0001F680"
+title: "Cómo usar los CLI alias para incrementar tu productividad \U0001F680"
 description: >-
   Probablemente sueles utilizar muchos comandos en el día a día en tu trabajo
   como programador. Muchos de ellos, los repites una y otra vez, para ejecutar
