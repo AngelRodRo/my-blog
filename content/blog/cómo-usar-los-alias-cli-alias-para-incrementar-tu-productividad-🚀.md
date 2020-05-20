@@ -10,11 +10,11 @@ description: >-
 ---
 ![](/assets/blur-bright-business-codes-207580.jpg)
 
+Las terminales basadas en UNIX tales como la de Linux o MacOS (incluso en Windows si usamos [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)) nos permite crear alias a los comandos, de tal forma que podamos encapsular varias comandos en un solo comando.
+
 
 
 # Pasos a seguir
-
-Las terminales basadas en UNIX tales como la de Linux o MacOS nos permite crear alias a los comandos, de tal forma que podamos encapsular varias comandos en un solo comando.
 
 Para hacer uso de los alias en la terminal deberemos usar la siguiente sintaxis:
 
