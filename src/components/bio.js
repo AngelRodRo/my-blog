@@ -18,10 +18,12 @@ function Bio() {
 
   const socialLinks = [
     {
+      id: 1,
       imgSrc: youtube,
       href: "https://www.youtube.com/channel/UCT49h0K1819qLW4sNiWgvGw"
     },
     {
+      id: 2,
       imgSrc: github,
       href: "https://github.com/AngelRodRo"
     }
@@ -42,8 +44,9 @@ function Bio() {
     )
   }
 
-  const SocialLinks = socialLinks.map(({imgSrc, href}) =>
+  const SocialLinks = socialLinks.map(({id, imgSrc, href}) =>
     <SocialLink
+      key={id}
       href={href}
       imgSrc={imgSrc}
     />
@@ -69,15 +72,17 @@ function Bio() {
                 borderRadius: `50%`,
               }}
             />
-            <p>
-              Escrito por <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
-              {` `}
-              Siguéme en:
+            <div>
+              <p>
+                Escrito divor <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
+                {` `}
+                Siguéme en:
+              </p>
               <br />
-            <SocialContainer>
-              {SocialLinks}
-            </SocialContainer>
-            </p>
+              <SocialContainer>
+                {SocialLinks}
+              </SocialContainer>
+            </div>
           </Container>
         )
       }}
