@@ -4,7 +4,6 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Newsletter from "../components/Newsletter";
 
 import { rhythm } from "../utils/typography"
 import "react-toggle/style.css"
@@ -17,8 +16,7 @@ class Blog extends React.Component {
     const posts = data.allMdx.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <Newsletter  />
+      <Layout  location={this.props.location} title={siteTitle}>
         <SEO title="Todos los articulos" />
 
         <div  style={{ margin: "20px 0 40px" }}>
@@ -33,7 +31,7 @@ class Blog extends React.Component {
                 >
                   <Link
                     style={{ boxShadow: `none` }}
-                    to={`blog${node.fields.slug}`}
+                    to={`/blog${node.fields.slug}`}
                   >
                     {title}
                   </Link>

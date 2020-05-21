@@ -13802,6 +13802,11 @@ react-frame-component@^4.1.0:
   resolved "https://registry.yarnpkg.com/react-frame-component/-/react-frame-component-4.1.1.tgz#ea8f7c518ef6b5ad72146dd1f648752369826894"
   integrity sha512-NfJp90AvYA1R6+uSYafQ+n+UM2HjHqi4WGHeprVXa6quU9d8o6ZFRzQ36uemY82dlkZFzf2jigFx6E4UzNFajA==
 
+react-fullpage-custom-loader@^0.1.5:
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/react-fullpage-custom-loader/-/react-fullpage-custom-loader-0.1.5.tgz#b9d0ab1ad7ddc6391a8c06e1a184d4b62b824ebe"
+  integrity sha512-34cknJ8pkjyK2R157fXPQY8pOSn+BPpp3vSnrdS2cLKOnv+OlTwtgoPlCX7SUmXN+/RDSoUTxZk6XJWGnTJ1gA==
+
 react-helmet@^5.2.0:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
@@ -14118,6 +14123,11 @@ react@^16.8.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
+
+reactjs-localstorage@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/reactjs-localstorage/-/reactjs-localstorage-1.0.1.tgz#0c4311527d9e9abb31dc1c40d64cb886204e0f23"
+  integrity sha512-eNSwfiVyVDhfjw9h83PBvgqQcFxmyK6KGPrPlutuaaTlALRZVQLZ0MAN72iU9UT+bKtscwtdogHQ2ikZ7rjT+w==
 
 read-chunk@^3.2.0:
   version "3.2.0"
@@ -16332,6 +16342,11 @@ swap-case@^1.1.0:
     lower-case "^1.1.1"
     upper-case "^1.1.1"
 
+sweetalert2-react-content@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2-react-content/-/sweetalert2-react-content-3.0.1.tgz#aed5fda272988a81fac576cffbbd2b7d30d6913d"
+  integrity sha512-VBybIRTIzY2bTkUddcp2wMJ3mp3gfGGX6+BfW2dDrEv6bXM2WtzJpFkM2imFpcPhpkOIf2/J8gLxEu0jBZq0DQ==
+
 sweetalert2-react@^0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/sweetalert2-react/-/sweetalert2-react-0.8.3.tgz#4d4eaf5de807cb8d229edcaa0d7d3f711c36f5b3"
@@ -16347,6 +16362,11 @@ sweetalert2@^8.5.0:
   version "8.19.0"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-8.19.0.tgz#692269bc8ddc5760e2b5070da2cf5e9e278bac0b"
   integrity sha512-nFL++N3bitkEkd487Tv4i5ZxusmnoAAXHjtk7lp603Opxb8wlvVnz3hqa7qiIw6QFL04JC810E6qVQNf8s0vYQ==
+
+sweetalert2@^9.13.1:
+  version "9.13.1"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.13.1.tgz#debe573ab1a1d66308c76ded86ec364b9521119e"
+  integrity sha512-yyhf9f3FIYNpOLVCbGOdFr13KuXqKWOiHvoFBio7mMtZxTpOsa3XRdVDd0EYCoI+MDuUyYh6TeeG345j8zxT/Q==
 
 symbol-observable@^1.0.4, symbol-observable@^1.2.0:
   version "1.2.0"

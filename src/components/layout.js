@@ -9,6 +9,7 @@ import { rhythm, scale } from "../utils/typography"
 import Newsletter from '../components/Newsletter';
 
 class Layout extends React.Component {
+
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`

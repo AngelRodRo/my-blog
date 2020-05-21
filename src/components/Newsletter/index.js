@@ -1,10 +1,14 @@
 
-import React from 'react';
-import Modal from 'react-modal';
+import React from 'react'
+import Modal from 'react-modal'
 import addToMailchimp from 'gatsby-plugin-mailchimp'
-import Styled from './styles';
-import { useForm } from "react-hook-form";
-import SweetAlert from 'sweetalert2-react';
+import { useForm } from 'react-hook-form'
+import { reactLocalStorage } from 'reactjs-localstorage'
+
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+import Styled from './styles'
 
 const customStyles = {
     content : {
@@ -20,38 +24,48 @@ const customStyles = {
         backgroundColor: 'rgba(0, 0, 0, .5)',
         transition: 'opacity 300ms ease-in-out',
     },
-};
-
-Modal.setAppElement('#main')
+}
 
 export default () => {
-    const { register, errors, handleSubmit } = useForm();
+    const { register, errors, handleSubmit } = useForm()
+    const MySwal = withReactContent(Swal)
 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
-    const [alertIsOpen, setIsAlertOpen] = React.useState(false);
-    const timeout = 4000;
+    const [modalIsOpen, setIsOpen] = React.useState(false)
+    const timeout = 1000
 
-    setTimeout(() => {
-        setIsOpen(true);
-    }, timeout);
+    React.useEffect(() => {
+        Modal.setAppElement('#main')
+        const suscribed = reactLocalStorage.get('suscribed')
+        if (!suscribed) {
+            setTimeout(() => setIsOpen(true), timeout)
+        }
+    }, [])
 
     function closeModal(){
-        setIsOpen(false);
+        setIsOpen(false)
     }
 
-     function onSubmit (data) {
-        console.log(data)
-        addToMailchimp(data.email); 
-        closeModal();
-        setIsAlertOpen(true);
+    function showSuccessAlert() {
+        MySwal.fire({
+            icon: 'success',
+            title: <p>Suscrito!</p>,
+            text: 'Tu email se ha añadido exitosamente!',
+        })
     }
+
+    function onSubmit (data) {
+        addToMailchimp(data.email)
+        reactLocalStorage.set('suscribed', true)
+        closeModal()
+        showSuccessAlert();
+    }
+
     return (
         <div>
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={customStyles}
-                ariaHideApp={false}
                 >
                 <Styled.Container>
                     <Styled.CloseButton onClick={closeModal}></Styled.CloseButton>
@@ -71,12 +85,6 @@ export default () => {
                     </Styled.Form>
                 </Styled.Container>
             </Modal>
-            <SweetAlert
-                show={alertIsOpen}
-                title="Demo"
-                text="SweetAlert in React"
-                onConfirm={() => setIsAlertOpen(false)}
-            />
         </div>
     );
 }
