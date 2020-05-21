@@ -18,7 +18,7 @@ class Blog extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <Newsletter isOpen={true} />
+        <Newsletter  />
         <SEO title="Todos los articulos" />
 
         <div  style={{ margin: "20px 0 40px" }}>

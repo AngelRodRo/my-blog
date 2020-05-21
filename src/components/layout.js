@@ -6,6 +6,8 @@ import Toggle from 'react-toggle'
 
 import { rhythm, scale } from "../utils/typography"
 
+import Newsletter from '../components/Newsletter';
+
 class Layout extends React.Component {
   render() {
     const { location, title, children } = this.props
@@ -79,8 +81,9 @@ class Layout extends React.Component {
                 </label>
               )}
             </ThemeToggler>
+            <Newsletter />
           </header>
-          <main>{children}</main>
+          <main id="main">{children}</main>
         </div>
         <Footer>
           © {new Date().getFullYear()}, Built with
