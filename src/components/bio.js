@@ -13,17 +13,25 @@ import styled from "styled-components"
 import { rhythm } from "../utils/typography"
 import youtube from "../icons/youtube.svg"
 import github from "../icons/github.svg"
+import facebook from "../icons/facebook.svg"
+import instagram from "../icons/instagram.svg"
 
 function Bio() {
 
   const socialLinks = [
     {
-      id: 1,
+      imgSrc: facebook,
+      href: "https://facebook.com/practidev"
+    },
+    {
+      imgSrc: instagram, 
+      href: "https://www.instagram.com/practidev19/"
+    },
+    {
       imgSrc: youtube,
       href: "https://www.youtube.com/channel/UCT49h0K1819qLW4sNiWgvGw"
     },
     {
-      id: 2,
       imgSrc: github,
       href: "https://github.com/AngelRodRo"
     }
@@ -44,9 +52,9 @@ function Bio() {
     )
   }
 
-  const SocialLinks = socialLinks.map(({id, imgSrc, href}) =>
+  const SocialLinks = socialLinks.map(({imgSrc, href}, idx) =>
     <SocialLink
-      key={id}
+      key={idx}
       href={href}
       imgSrc={imgSrc}
     />
@@ -73,12 +81,8 @@ function Bio() {
               }}
             />
             <div>
-              <p>
-                Escrito divor <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
-                {` `}
+                Escrito por <strong>{author}</strong> quien trabaja para crear un mundo mejor con conocimientos y tecnologia al alcance de todos.
                 Siguéme en:
-              </p>
-              <br />
               <SocialContainer>
                 {SocialLinks}
               </SocialContainer>
