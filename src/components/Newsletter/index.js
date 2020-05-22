@@ -31,18 +31,21 @@ export default () => {
     const MySwal = withReactContent(Swal)
 
     const [modalIsOpen, setIsOpen] = React.useState(false)
-    const timeout = 10000
+    const timeout = 1000
 
     React.useEffect(() => {
         Modal.setAppElement('#main')
         const suscribed = reactLocalStorage.get('suscribed')
-        if (!suscribed) {
+        const notInterested = reactLocalStorage.get('notInterested')
+
+        if (!(suscribed || notInterested)) {
             setTimeout(() => setIsOpen(true), timeout)
         }
     }, [])
 
     function closeModal(){
         setIsOpen(false)
+        reactLocalStorage.set('notInterested', true)
     }
 
     function showSuccessAlert() {
