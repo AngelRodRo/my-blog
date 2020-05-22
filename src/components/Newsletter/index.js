@@ -31,7 +31,7 @@ export default () => {
     const MySwal = withReactContent(Swal)
 
     const [modalIsOpen, setIsOpen] = React.useState(false)
-    const timeout = 1000
+    const timeout = 10000
 
     React.useEffect(() => {
         Modal.setAppElement('#main')
