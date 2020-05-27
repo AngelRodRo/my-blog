@@ -100,5 +100,11 @@ module.exports = {
         endpoint: 'https://dev.us18.list-manage.com/subscribe/post?u=f5e0cb2a583994cdaa71af485&amp;id=97223150ae', // add your MC list endpoint here; see instructions below
       },
     },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: `ca-pub-6764772624922833`
+      },
+    },
   ],
 }
