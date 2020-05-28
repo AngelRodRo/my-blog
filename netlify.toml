@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "https://urtips.dev"
+  to = "https://practi.dev"
+  status = 301
+  force = true
