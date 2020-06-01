@@ -3,9 +3,9 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { anOldHope, github } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Copy, Check, Star } from 'react-feather'
+import './bounce.css'
 
 import simpleIcons from 'simple-icons'
-
 
 import UserInfo from '../../components/UserInfo'
 
@@ -21,10 +21,16 @@ const mappedIcons = {
     html: 'HTML5'
 }
 
-export default function Tip ({ tip: { title, code, language, description, user, created } }){
+export default function Tip ({ tip: { id = "", title, code, language, description, user, created } }){
+    const localRating =  Number(localStorage.getItem(id, 0))
+    console.log(localRating)
+    const MAX_LOCALRATING = 5
+    
+    const ratingButton = React.useRef(null);
 
     //TODO: Add rating to show tip's popularity
     const [copied, setCopied] = React.useState(false)
+    const [rating, setRating] = React.useState(0)
 
     const date = utils.formatDate(created)
     const icon = simpleIcons.get(mappedIcons[language.toLowerCase()])
@@ -32,6 +38,15 @@ export default function Tip ({ tip: { title, code, language, description, user, 
     const copiedDelay = () => {
         setCopied(true)
         setTimeout(() => setCopied(false), 3000)
+    }
+
+    const increaseRating = () => {
+        // updateTipRating() 
+        ratingButton.current.classList.remove('bounce')
+        ratingButton.current.classList.add('bounce')
+        const newRating = rating + 1;
+        localStorage.setItem(id, newRating)
+        setRating(newRating)
     }
 
     return (
@@ -57,6 +72,14 @@ export default function Tip ({ tip: { title, code, language, description, user, 
                     />
                 </Styled.LngIcon>
                 <Styled.ActionsSection>
+                    {
+                        localRating < MAX_LOCALRATING ? 
+                            (<Styled.RatingButton ref={ratingButton} onClick={increaseRating}>
+                                <Styled.Rating >{rating}</Styled.Rating>
+                                <Star/>
+                            </Styled.RatingButton>) : null
+                        
+                    }
                     <Styled.CopyButton isCopied={copied}>
                         <CopyToClipboard
                             text={code}
@@ -65,10 +88,6 @@ export default function Tip ({ tip: { title, code, language, description, user, 
                             {copied ? <Check color="#84ffb5" /> : <Copy />}
                         </CopyToClipboard>
                     </Styled.CopyButton>
-                    <Styled.RatingButton>
-                        <span>10</span>
-                        <Star/>
-                    </Styled.RatingButton>
                 </Styled.ActionsSection>
             </Styled.CodeSection>
         </Styled.Card>

@@ -57,16 +57,31 @@ Styled.ActionsSection = styled.div`
     top: 0;
     right: 0;
     display: flex;
+    margin: 15px;
 `
 Styled.CopyButton = styled.div`
-    margin: 15px;
     color: #999;
     cursor: ${ props => props.isCopied? '' : 'pointer'};
+    margin: 0 5px;
+
+    :hover {
+        color: white;
+    }
+`
+
+Styled.Rating = styled.span`
+    line-height: 1.5;
+    margin-right: 5px;
 `
 Styled.RatingButton = styled.div`
+    display: flex;
     color: #999;
-    vertical-align: center;
-    margin: 15px;
+    margin: 0 5px;
+    cursor: pointer;
+
+    :hover {
+        color: white;
+    }
 `
 
 export default Styled
