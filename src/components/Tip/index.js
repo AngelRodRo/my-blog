@@ -25,7 +25,7 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
     const localRating =  Number(localStorage.getItem(id, 0))
     console.log(localRating)
     const MAX_LOCALRATING = 5
-    
+
     const ratingButton = React.useRef(null);
 
     //TODO: Add rating to show tip's popularity
@@ -41,7 +41,7 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
     }
 
     const increaseRating = () => {
-        // updateTipRating() 
+        // updateTipRating()
         ratingButton.current.classList.remove('bounce')
         ratingButton.current.classList.add('bounce')
         const newRating = rating + 1;
@@ -60,7 +60,7 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
                 <p>{description}</p>
             </Styled.Info>
             <Styled.CodeSection>
-                <SyntaxHighlighter language={language} style={anOldHope} >
+                <SyntaxHighlighter customStyle={{height: '200px'}} language={language} style={anOldHope} >
                     {code}
                 </SyntaxHighlighter>
                 <Styled.LngIcon>
@@ -73,12 +73,12 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
                 </Styled.LngIcon>
                 <Styled.ActionsSection>
                     {
-                        localRating < MAX_LOCALRATING ? 
+                        localRating < MAX_LOCALRATING ?
                             (<Styled.RatingButton ref={ratingButton} onClick={increaseRating}>
                                 <Styled.Rating >{rating}</Styled.Rating>
                                 <Star/>
                             </Styled.RatingButton>) : null
-                        
+
                     }
                     <Styled.CopyButton isCopied={copied}>
                         <CopyToClipboard
