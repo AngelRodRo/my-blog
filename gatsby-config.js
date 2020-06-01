@@ -95,6 +95,21 @@ module.exports = {
       }
     },
     {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyAup4qfifxfNWkVM9WrmqCOvxrpoB_mygM",
+          authDomain: "website-78c91.firebaseapp.com",
+          databaseURL: "https://website-78c91.firebaseio.com",
+          projectId: "website-78c91",
+          storageBucket: "website-78c91.appspot.com",
+          messagingSenderId: "1010763307176",
+          appId: "1:1010763307176:web:11b0ee7ba145d4702b8a9d",
+          measurementId: "G-D0W5GQSE8E"
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-mailchimp',
       options: {
         endpoint: 'https://dev.us18.list-manage.com/subscribe/post?u=f5e0cb2a583994cdaa71af485&amp;id=97223150ae', // add your MC list endpoint here; see instructions below
