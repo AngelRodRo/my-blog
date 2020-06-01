@@ -49,18 +49,24 @@ Styled.LngIcon = styled.div`
     padding: 5px;
     border-radius: 5px;
 `
-
-Styled.CopyButton = styled.div`
+Styled.CodeSection = styled.div`
+    position: relative;
+`
+Styled.ActionsSection = styled.div`
     position: absolute;
     top: 0;
     right: 0;
+    display: flex;
+`
+Styled.CopyButton = styled.div`
     margin: 15px;
     color: #999;
     cursor: ${ props => props.isCopied? '' : 'pointer'};
 `
-
-Styled.CodeSection = styled.div`
-    position: relative;
+Styled.RatingButton = styled.div`
+    color: #999;
+    vertical-align: center;
+    margin: 15px;
 `
 
 export default Styled

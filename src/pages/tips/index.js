@@ -17,7 +17,8 @@ const tips = [
             <p>
                 Hello world!
             </p>
-        `
+        `,
+        created: new Date
     }
 ]
 

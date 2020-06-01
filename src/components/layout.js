@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
-import Toggle from 'react-toggle'
+import { Moon, Sun } from 'react-feather'
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -15,50 +15,67 @@ class Layout extends React.Component {
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog`
     let header
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+
+
+    if ([rootPath, blogPath].includes(location.pathname)) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-          <Link
+          <h1
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              ...scale(1.5),
+              marginBottom: rhythm(1.5),
+              marginTop: 0,
             }}
-            to={location.pathname === blogPath ? `/blog/` : `/`}
           >
-            {title}
-          </Link>
-        </h1>
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `inherit`,
+              }}
+              to={location.pathname === blogPath ? `/blog/` : `/`}
+            >
+              {title}
+            </Link>
+          </h1>
       )
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
+          <h3
             style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
+              fontFamily: `Montserrat, sans-serif`,
+              marginTop: 0,
             }}
-            to={`/blog/`}
           >
-            {title}
-          </Link>
-        </h3>
+            <Link
+              style={{
+                boxShadow: `none`,
+                textDecoration: `none`,
+                color: `inherit`,
+              }}
+              to={`/blog/`}
+            >
+              {title}
+            </Link>
+          </h3>
       )
     }
+
     return (
       <Wrapper>
+        <DarkModeToggle>
+          <ThemeToggler>
+            {({ theme, toggleTheme }) => {
+              const isDark = theme === 'dark';
+              return (
+                <div
+                  style={{ color: isDark? 'white' : 'black'  }}
+                  onClick={() => toggleTheme(isDark ? 'light' : 'dark')}
+                  >{ isDark ? <Sun /> : <Moon />}
+                </div>)
+              }
+            }
+          </ThemeToggler>
+        </DarkModeToggle>
         <div
           style={{
             marginLeft: `auto`,
@@ -72,32 +89,29 @@ class Layout extends React.Component {
         >
           <header>
             {header}
-            <ThemeToggler>
-              {({ theme, toggleTheme }) => (
-                <label>
-                  <Toggle
-                    checked={theme === 'dark'}
-                    onChange={e => toggleTheme(e.target.checked ? 'dark' : 'light')} />
-                  <span style={{ 'verticalAlign': 'super', 'margin': '0 5px' }}>Modo oscuro</span>
-                </label>
-              )}
-            </ThemeToggler>
-            <Newsletter />
           </header>
+          <Newsletter />
           <main id="main">{children}</main>
         </div>
         <Footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          © {new Date().getFullYear()}, PractiDev
         </Footer>
       </Wrapper>
     )
   }
 }
 
+const DarkModeToggle = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 20px;
+  cursor: pointer;
+`
+
 const Wrapper = styled.div`
   min-height: 100vh;
+  position: relative;
 `
 
 const Footer = styled.footer`

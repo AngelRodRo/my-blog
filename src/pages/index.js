@@ -7,7 +7,6 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import { rhythm } from "../utils/typography"
-import "react-toggle/style.css"
 
 class Blog extends React.Component {
 
