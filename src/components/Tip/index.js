@@ -21,6 +21,7 @@ const mappedIcons = {
 
 export default function Tip ({ tip: { title, code, language, description, user } }){
 
+    //TODO: Add rating to show tip's popularity
     const [copied, setCopied] = React.useState(false)
 
     const date = utils.formatDate(new Date())
