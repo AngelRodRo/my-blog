@@ -19,6 +19,10 @@ Styled.Card = styled.div`
     }
 `
 
+Styled.Description = styled.p`
+    margin: 0;
+`
+
 Styled.Info = styled.div`
     padding: 10px 25px 0px 25px;
 `

@@ -8,7 +8,7 @@ import './bounce.css'
 import simpleIcons from 'simple-icons'
 
 import UserInfo from '../../components/UserInfo'
-
+import TagList from '../../components/TagList'
 import Styled from './styles'
 import utils from '../../utils'
 
@@ -23,7 +23,6 @@ const mappedIcons = {
 
 export default function Tip ({ tip: { id = "", title, code, language, description, user, created } }){
     const localRating =  Number(localStorage.getItem(id, 0))
-    console.log(localRating)
     const MAX_LOCALRATING = 5
 
     const ratingButton = React.useRef(null);
@@ -49,6 +48,12 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
         setRating(newRating)
     }
 
+    const tags = [
+        { name: "GIT" },
+        { name: "Preview" },
+        { name: "Preview" },
+    ];
+
     return (
         <Styled.Card>
             <Styled.Info>
@@ -57,7 +62,8 @@ export default function Tip ({ tip: { id = "", title, code, language, descriptio
                     <UserInfo user={user} />
                     <Styled.Date>{date}</Styled.Date>
                 </Styled.Details>
-                <p>{description}</p>
+                <Styled.Description>{description}</Styled.Description>
+                <TagList tags={tags}></TagList>
             </Styled.Info>
             <Styled.CodeSection>
                 <SyntaxHighlighter customStyle={{height: '200px'}} language={language} style={anOldHope} >
