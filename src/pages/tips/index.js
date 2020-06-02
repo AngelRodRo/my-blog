@@ -43,7 +43,12 @@ const tips = [
                 Hello world!
             </p>
         `,
-        created: new Date
+        created: new Date,
+        tags: [
+            { name: "GIT" },
+            { name: "Preview" },
+            { name: "Preview" },
+        ]
     },
     {
         id: 2,
@@ -61,7 +66,12 @@ const tips = [
             console.log('asdasd')
         }
         `,
-        created: new Date
+        created: new Date,
+        tags: [
+            { name: "GIT" },
+            { name: "Preview" },
+            { name: "Preview" },
+        ]
     },
     {
         id: 3,
@@ -80,7 +90,12 @@ const tips = [
                 Hello world!
             </p>
         `,
-        created: new Date
+        created: new Date,
+        tags: [
+            { name: "GIT" },
+            { name: "Preview" },
+            { name: "Preview" },
+        ]
     }
 ]
 
