@@ -10,6 +10,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.1",
     "@mdx-js/react": "^1.5.1",
+    "ace-builds": "^1.4.11",
     "babel-plugin-styled-components": "^1.10.0",
     "firebase": "^7.14.5",
     "firebaseui": "^4.5.0",
@@ -41,6 +42,7 @@
     "gatsby-transformer-sharp": "^2.1.18",
     "netlify-cms-app": "^2.9.1",
     "react": "^16.8.6",
+    "react-ace": "^9.0.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.8",
