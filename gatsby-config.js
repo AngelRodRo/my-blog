@@ -121,5 +121,11 @@ module.exports = {
         publisherId: `ca-pub-6764772624922833`
       },
     },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        includePaths: ["./src"],
+      },
+    }
   ],
 }

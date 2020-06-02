@@ -1,10 +1,14 @@
 import React from 'react'
 import TipForm from '../../components/TipForm'
 
+import Layout from '../../components/Layout/tips'
+
 export default () => {
     return (
-        <div>
-            <TipForm></TipForm>
-        </div>
+        <Layout>
+            <div>
+                <TipForm></TipForm>
+            </div>
+        </Layout>
     )
 }

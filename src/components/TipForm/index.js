@@ -1,32 +1,13 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import AceEditor from "react-ace"
-import "ace-builds/src-noconflict/mode-javascript";
-import "ace-builds/src-noconflict/theme-monokai";
 
-const languages = [
-    "javascript",
-    "java",
-    "python",
-    "xml",
-    "ruby",
-    "sass",
-    "markdown",
-    "mysql",
-    "json",
-    "html",
-    "handlebars",
-    "golang",
-    "csharp",
-    "elixir",
-    "typescript",
-    "css"
-];
+import Styled from './styles'
 
-languages.forEach(lang => {
-    require(`ace-builds/src-noconflict/mode-${lang}`);
-    require(`ace-builds/src-noconflict/snippets/${lang}`);
-});
+import "ace-builds/src-noconflict/mode-javascript"
+import "ace-builds/src-noconflict/theme-monokai"
+
+import languages from './ace-lngs-installer'
 
 export default () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -45,11 +26,11 @@ export default () => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" ref={register({ required: true })} />
-                <textarea ref={register({ required: true })} />
+            <Styled.Form onSubmit={handleSubmit(onSubmit)}>
+                <input placeholder="Titulo" type="text" ref={register({ required: true })} />
+                <textarea placeholder="Descripcion" ref={register({ required: true })} />
                 <div className="field">
-                    <label>Mode:</label>
+                    <label>Lenguaje:</label>
                     <p className="control">
                     <span className="select">
                         <select
@@ -73,8 +54,8 @@ export default () => {
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
                 />
-                <button type="submit"></button>
-            </form>
+                <button type="submit">Crear</button>
+            </Styled.Form>
         </>
     )
 }

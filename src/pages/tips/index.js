@@ -1,5 +1,6 @@
 import React from 'react'
 import Tip from '../../components/Tip'
+import Layout from '../../components/Layout/tips'
 
 const tips = [
     {
@@ -102,8 +103,10 @@ const tips = [
 export default () => {
     const TipsList = () => tips.map(tip => <Tip tip={tip} />)
     return (
-        <div>
-            <TipsList></TipsList>
-        </div>
+        <Layout>
+            <div>
+                <TipsList></TipsList>
+            </div>
+        </Layout>
     )
 }
