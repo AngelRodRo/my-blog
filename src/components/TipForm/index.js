@@ -2,6 +2,8 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import AceEditor from "react-ace"
 
+import "./form.css"
+
 import Styled from './styles'
 
 import "ace-builds/src-noconflict/mode-javascript"
@@ -26,27 +28,21 @@ export default () => {
     }
     return (
         <>
-            <Styled.Form onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder="Titulo" type="text" ref={register({ required: true })} />
-                <textarea placeholder="Descripcion" ref={register({ required: true })} />
-                <div className="field">
-                    <label>Lenguaje:</label>
-                    <p className="control">
-                    <span className="select">
-                        <select
-                        name="mode"
-                        onChange={changeLng}
-                        value={lang}
-                        >
-                        {languages.map(lang => (
-                            <option key={lang} value={lang}>
-                                {lang}
-                            </option>
-                        ))}
-                        </select>
-                    </span>
-                    </p>
-                </div>
+            <Styled.Form className="form" onSubmit={handleSubmit(onSubmit)}>
+                <Styled.Input className="form" placeholder="Titulo" type="text" ref={register({ required: true })} />
+                <Styled.TextArea className="form" placeholder="Descripcion" ref={register({ required: true })} />
+                <Styled.Select
+                    className="form"
+                    name="mode"
+                    onChange={changeLng}
+                    value={lang}
+                    >
+                    {languages.map(lang => (
+                        <option key={lang} value={lang}>
+                            {lang}
+                        </option>
+                    ))}
+                </Styled.Select>
                 <AceEditor
                     mode={lang}
                     theme="monokai"
@@ -54,7 +50,7 @@ export default () => {
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
                 />
-                <button type="submit">Crear</button>
+                <Styled.Button className="form" type="submit">Crear</Styled.Button>
             </Styled.Form>
         </>
     )

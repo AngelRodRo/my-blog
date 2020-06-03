@@ -1003,6 +1003,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@codolog/form@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@codolog/form/-/form-1.0.0.tgz#81d2be84e694bc6a0d0d01a3a4d4af030ac56365"
+  integrity sha512-ZAOaDxEa37s2RqQgzWb1pqEGJthID1MfIUl98TkFfB8EQbHbIphSGPNUTLqSpoFjln8iOj/EjtGBZ4NzpsY/iQ==
+
 "@emotion/babel-utils@^0.6.4":
   version "0.6.10"
   resolved "https://registry.yarnpkg.com/@emotion/babel-utils/-/babel-utils-0.6.10.tgz#83dbf3dfa933fae9fc566e54fbb45f14674c6ccc"
