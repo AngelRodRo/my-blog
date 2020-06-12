@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import AceEditor from "react-ace"
+import Select from 'react-select';
 
 import "./form.css"
 
@@ -13,6 +14,11 @@ import languages from './ace-lngs-installer'
 
 export default () => {
     const { register, handleSubmit, watch, errors } = useForm();
+    let code = "";
+    const colourOptions = [
+        { value: 'snippet', label: 'Snippet' },
+        { value: 'tip', label: 'Tip', },
+      ];
 
     const [lang, setLang] = React.useState('javascript');
 
@@ -20,17 +26,19 @@ export default () => {
         setLang(e.target.value)
     }
 
-    const onSubmit = () => {
-
+    const onSubmit = ({ title, description }) => {
+        if (!code) {
+            alert('Añade codigo antes de continuar')
+        }
     }
     function onChange(newValue) {
-        console.log("change", newValue);
+        code = newValue;
     }
     return (
         <>
             <Styled.Form className="form" onSubmit={handleSubmit(onSubmit)}>
-                <Styled.Input className="form" placeholder="Titulo" type="text" ref={register({ required: true })} />
-                <Styled.TextArea className="form" placeholder="Descripcion" ref={register({ required: true })} />
+                <Styled.Input name="title" className="form" placeholder="Titulo" type="text" ref={register({ required: true })} />
+                <Styled.TextArea name="description" className="form" placeholder="Descripción" ref={register({ required: true })} />
                 <Styled.Select
                     className="form"
                     name="mode"
@@ -44,12 +52,26 @@ export default () => {
                     ))}
                 </Styled.Select>
                 <AceEditor
+                    style={{ width: '100%' }}
                     mode={lang}
+                    fontSize={20}
                     theme="monokai"
                     onChange={onChange}
-                    name="UNIQUE_ID_OF_DIV"
+                    name="ace-code-editor"
                     editorProps={{ $blockScrolling: true }}
                 />
+                <div
+                    style={{ margin: '10px 0' }}
+                >
+                    <Select
+                        isMulti
+                        defaultValue={[colourOptions[2], colourOptions[3]]}
+                        name="colors"
+                        options={colourOptions}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
+                    />
+                </div>
                 <Styled.Button className="form" type="submit">Crear</Styled.Button>
             </Styled.Form>
         </>
