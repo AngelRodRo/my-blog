@@ -12,6 +12,10 @@ import "ace-builds/src-noconflict/theme-monokai"
 
 import languages from './ace-lngs-installer'
 
+const capitalize = ([first, ...rest]) => 
+    first.toUpperCase() + rest;
+
+//TODO: Implement well-built validations
 export default () => {
     const { register, handleSubmit, watch, errors } = useForm();
     let code = "";
@@ -47,7 +51,7 @@ export default () => {
                     >
                     {languages.map(lang => (
                         <option key={lang} value={lang}>
-                            {lang}
+                            { lang? capitalize(lang) : ''}
                         </option>
                     ))}
                 </Styled.Select>

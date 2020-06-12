@@ -21,6 +21,7 @@ class TipsLayout extends React.Component {
                     transition: 'color 0.2s ease-out, background 0.2s ease-out',
                 }}
             >
+                <h2 style={{ color: 'white' }}>TIPS</h2>
                 {children}
             </div>
         </MainLayout>
