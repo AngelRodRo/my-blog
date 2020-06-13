@@ -1,17 +1,28 @@
-import firebase from "gatsby-plugin-firebase"
+import collection from './index';
 
 export default {
-    create() {
-        const db = firebase.firestore();
-        db.collection("tips").add({
-            title: "Ada",
-            description: "Lovelace",
+    async list () {
+        const tips = await collection("tips").get().then(querySnapshot => {
+            let docs = []
+            querySnapshot.forEach(function(doc) {
+                docs.push({
+                    id: doc.id,
+                    ...doc.data()
+                })
+            });
+            return docs;
         })
-        .then(function(docRef) {
-            console.log("Document written with ID: ", docRef.id);
+        
+        return tips
+    },
+    async create({ title, description, code, language, tags }) {
+        const docRef = await collection("tips").add({
+            title,
+            description,
+            code,
+            language,
+            tags,
         })
-        .catch(function(error) {
-            console.error("Error adding document: ", error);
-        });
+        console.log("Document written with ID: ", docRef.id)
     }
 }
