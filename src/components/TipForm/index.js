@@ -12,8 +12,11 @@ import "ace-builds/src-noconflict/theme-monokai"
 
 import languages from './ace-lngs-installer'
 
-const capitalize = ([first, ...rest]) => 
+const capitalize = ([first, ...rest]) =>
     first.toUpperCase() + rest;
+
+import tipDS from '../../datasources/tips';
+
 
 //TODO: Implement well-built validations
 export default () => {
@@ -22,8 +25,8 @@ export default () => {
     const colourOptions = [
         { value: 'snippet', label: 'Snippet' },
         { value: 'tip', label: 'Tip', },
-      ];
-
+    ];
+    tipDS.create();
     const [lang, setLang] = React.useState('javascript');
 
     const changeLng = (e) => {
