@@ -22,8 +22,7 @@ const mappedIcons = {
 }
 
 export default function Tip ({ tip: { id = "", title = "", code = "", language = "", description = "", user, tags = [], created } }){
-    
-    debugger
+
     const localRating =  Number(localStorage.getItem(id, 0))
     const MAX_LOCALRATING = 5
 

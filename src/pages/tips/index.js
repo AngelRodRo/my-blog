@@ -106,20 +106,21 @@ export default () => {
 
     const [tips, setTips] = React.useState([])
 
-    tipDS.list().then(tips => setTips(tips));
+    React.useEffect(() => {
+        tipDS.list().then(setTips);
+    }, [])
+
     const user = {
         firstName: "Angel",
         lastName: "Rodriguez",
         profileLink: "/some-url",
         profileImg: "https://picsum.photos/200/300"
     }
-    console.log(tips)
-    const TipsList = () => tips.map(tip => <Tip tip={{...tip, user}} key={tip.id} />)
+
+    const TipsList = () => tips.map(tip => <Tip tip={tip} key={tip.id} />)
     return (
         <Layout>
-            <div>
-                <TipsList></TipsList>
-            </div>
+            <TipsList />
         </Layout>
     )
 }

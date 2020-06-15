@@ -8,7 +8,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 `
 
-export default (tags) => {
+export default ({tags}) => {
     return (
         <Container>
             {tags.map((tag, idx) => <Tag key={idx} name={tag} />)}

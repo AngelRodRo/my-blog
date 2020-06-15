@@ -26,14 +26,14 @@ const HEXColors = [
     "#44d3f8",
 ]
 
-export default (tag) => {
+export default ({name}) => {
 
     const randNum = Math.floor(Math.random() * (10))
     const color = HEXColors[randNum]
 
     return (
         <Container color={color}>
-            {tag}
+            {name}
         </Container>
     )
 }

@@ -37,8 +37,7 @@ export default () => {
             alert('Añade codigo antes de continuar')
             return;
         }
-        //await tipDS.create({ title, description, code });
-
+        await tipDS.create({ title, description, code });
     }
     function onChange(newValue) {
         code = newValue;
