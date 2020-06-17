@@ -12,8 +12,11 @@ import "ace-builds/src-noconflict/theme-monokai"
 
 import languages from './ace-lngs-installer'
 
-const capitalize = ([first, ...rest]) => 
+const capitalize = ([first, ...rest]) =>
     first.toUpperCase() + rest;
+
+import tipDS from '../../datasources/tips';
+
 
 //TODO: Implement well-built validations
 export default () => {
@@ -22,18 +25,19 @@ export default () => {
     const colourOptions = [
         { value: 'snippet', label: 'Snippet' },
         { value: 'tip', label: 'Tip', },
-      ];
-
+    ];
     const [lang, setLang] = React.useState('javascript');
 
     const changeLng = (e) => {
         setLang(e.target.value)
     }
 
-    const onSubmit = ({ title, description }) => {
+    const onSubmit = async ({ title, description }) => {
         if (!code) {
             alert('Añade codigo antes de continuar')
+            return;
         }
+        await tipDS.create({ title, description, code });
     }
     function onChange(newValue) {
         code = newValue;

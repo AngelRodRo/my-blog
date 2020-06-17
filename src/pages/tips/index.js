@@ -2,6 +2,8 @@ import React from 'react'
 import Tip from '../../components/Tip'
 import Layout from '../../components/Layout/tips'
 
+import tipDS from '../../datasources/tips';
+
 const tips = [
     {
         id: 1,
@@ -101,12 +103,24 @@ const tips = [
 ]
 
 export default () => {
-    const TipsList = () => tips.map(tip => <Tip tip={tip} />)
+
+    const [tips, setTips] = React.useState([])
+
+    React.useEffect(() => {
+        tipDS.list().then(setTips);
+    }, [])
+
+    const user = {
+        firstName: "Angel",
+        lastName: "Rodriguez",
+        profileLink: "/some-url",
+        profileImg: "https://picsum.photos/200/300"
+    }
+
+    const TipsList = () => tips.map(tip => <Tip tip={tip} key={tip.id} />)
     return (
         <Layout>
-            <div>
-                <TipsList></TipsList>
-            </div>
+            <TipsList />
         </Layout>
     )
 }

@@ -11,7 +11,7 @@ const Container = styled.div`
 export default ({tags}) => {
     return (
         <Container>
-            {tags.map(({name}) => <Tag name={name} />)}
+            {tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
         </Container>
     )
 
