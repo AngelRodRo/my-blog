@@ -1,22 +1,21 @@
-import React from 'react'
-import firebase from "gatsby-plugin-firebase"
+import React from "react"
+import GoogleButton from "react-google-button"
+
+import userDS from "@datasources/user.js"
 
 export default () => {
-    const provider = new firebase.auth.GoogleAuthProvider();
     const googleSignIn = async e => {
-        e.preventDefault();
+        e.preventDefault()
         try {
-            const result = await firebase.auth().signInWithPopup(provider);
-            console.log(result)
+            await userDS.login()
         } catch (e) {
             console.log(e)
         }
-    };
-
+    }
 
     return (
         <>
-            <button onClick={googleSignIn}>Sign In</button>
+            <GoogleButton onClick={googleSignIn}>Sign In</GoogleButton>
         </>
     );
 }

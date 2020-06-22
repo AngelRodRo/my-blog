@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   siteMetadata: {
     // edit below
@@ -126,6 +128,16 @@ module.exports = {
       options: {
         includePaths: ["./src"],
       },
+    },
+    {
+      resolve: `gatsby-plugin-alias-imports`,
+      options: {
+        alias: {
+          "@components": path.resolve(__dirname, 'src/components'),
+          "@datasources": path.resolve(__dirname, 'src/datasources')
+        },
+        extensions: []
+      }
     }
   ],
 }

@@ -8,6 +8,7 @@ const StyledLink = styled.a`
     margin: 10px;
     box-shadow: none;
 
+    color: white;
     height: 30px;
 `
 
@@ -19,10 +20,10 @@ const StyledProfileImg = styled.img`
 `
 
 export default function UserInfo ({ user }) {
-    const userFullname = `${user.firstName} ${user.lastName}`
+    const userFullname = `${user.fullName}`
     return (
         <StyledLink href={user.profileLink}>
-            <StyledProfileImg src={user.profileImg} />
+            <StyledProfileImg src={user.picture} />
             <span>{userFullname}</span>
         </StyledLink>
     )
