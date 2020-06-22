@@ -1,4 +1,6 @@
-import collection from './index';
+import firebase from "gatsby-plugin-firebase"
+
+const firestore = firebase.firestore()
 
 const convertToArray = (snapshots) => {
     let docs = []
@@ -15,7 +17,7 @@ const convertToArray = (snapshots) => {
 export default {
     async list () {
         const tips = []
-        const tipsSnapshot = convertToArray(await collection("tips").get())
+        const tipsSnapshot = convertToArray(await firestore.collection("tips").get())
         for (const tipDoc of tipsSnapshot) {
             const userSnapshot = convertToArray(await tipDoc.ref.collection('user').get());
             for (const userDoc of userSnapshot) {
@@ -28,7 +30,7 @@ export default {
         return tips
     },
     async create({ title, description, code, language = "", tags = [], userId = "" }) {
-        const tipRef = await collection("tips").add({
+        const tipRef = await firestore.collection("tips").add({
             title,
             description,
             code,
