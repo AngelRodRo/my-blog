@@ -1,13 +1,13 @@
-import React from "react"
+import React from 'react'
 
-import { setUser, getUser, isLoggedIn, logout } from "src/utils/auth"
+import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
-import Tip from "src/components/Tip"
+import Tip from 'src/components/Tip'
 import Profile from 'src/components/Profile'
-import Login from "src/components/Login"
+import Login from 'src/components/Login'
 
-import userDS from "src/datasources/user"
-import tipDS from "src/datasources/tips"
+import userDS from 'src/datasources/user'
+import tipDS from 'src/datasources/tips'
 
 export default function Index() {
 
@@ -17,12 +17,12 @@ export default function Index() {
 
     userDS.inspect(user => {
         if (user) {
-            setIsLogged(true);
+            setIsLogged(true)
         }
     })
 
     React.useEffect(() => {
-        tipDS.list().then(setTips);
+        tipDS.list().then(setTips)
     }, [])
 
     const TipsList = () => tips.map(tip =>
@@ -60,5 +60,5 @@ export default function Index() {
     )
 }
 
-Index.displayName = "TipIndex"
+Index.displayName = 'TipIndex'
 

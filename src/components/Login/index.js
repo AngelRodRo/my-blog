@@ -1,8 +1,8 @@
-import React from "react"
-import GoogleButton from "react-google-button"
-import PropTypes from "prop-types"
+import React from 'react'
+import GoogleButton from 'react-google-button'
+import PropTypes from 'prop-types'
 
-import userDS from "src/datasources/user.js"
+import userDS from 'src/datasources/user.js'
 
 export default function Login ({ updateUser }) {
     const googleSignIn = async e => {
@@ -20,10 +20,10 @@ export default function Login ({ updateUser }) {
             onClick={googleSignIn}>
             Sign In
         </GoogleButton>
-    );
+    )
 }
 
-Login.displayName = "Login"
+Login.displayName = 'Login'
 Login.propTypes = {
     updateUser: PropTypes.func.isRequired,
 }

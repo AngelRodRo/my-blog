@@ -9,4 +9,4 @@ export default function TipCreation () {
     )
 }
 
-TipCreation.displayName = "TipCreation"
+TipCreation.displayName = 'TipCreation'

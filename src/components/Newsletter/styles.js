@@ -1,9 +1,9 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const Form = styled.form`
     display: flex;
     overflow: hidden;
-`;
+`
 
 const Button = styled.button`
     background-color: #104d88;
@@ -16,7 +16,7 @@ const Button = styled.button`
         background-color: #0c3358;
         border-color: #0c3358;
     }
-`;
+`
 
 const Input = styled.input`
     width: 100%;
@@ -34,12 +34,12 @@ const Input = styled.input`
     :focus {
         border-color: ${props => props.error? 'red' : '#3e4146'};
     }
-`;
+`
 
 const Container = styled.div`
     display: flex;
     flex-direction: column;
-`;
+`
 
 const CloseButton = styled.span`
     position: absolute;
@@ -69,7 +69,7 @@ const CloseButton = styled.span`
         transform: rotate(45deg);
 
     }
-`;
+`
 
 export default {
     Button,

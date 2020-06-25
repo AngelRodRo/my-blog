@@ -20,4 +20,4 @@ export default function TagList ({ tags }) {
 }
 TagList.propTypes = {
     tags: PropTypes.array.isRequired,
-};
+}

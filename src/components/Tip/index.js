@@ -9,8 +9,8 @@ import './bounce.css'
 
 import simpleIcons from 'simple-icons'
 
-import UserInfo from '../../components/UserInfo'
-import TagList from '../../components/TagList'
+import UserInfo from 'src/components/UserInfo'
+import TagList from 'src/components/TagList'
 import Styled from './styles'
 import utils from '../../utils'
 
@@ -23,12 +23,14 @@ const mappedIcons = {
     html: 'HTML5'
 }
 
-export default function Tip ({ tip: { id = "", title = "", code = "", language = "", description = "", user, tags = [], created } }){
+export default function Tip ({ tip:
+    { id = '', title = '', code = '', language = '', description = '', user, tags = [], created }
+}){
 
     const localRating =  Number(localStorage.getItem(id, 0)) //eslint-disable-line
     const MAX_LOCALRATING = 5
 
-    const ratingButton = React.useRef(null);
+    const ratingButton = React.useRef(null)
 
     //TODO: Add rating to show tip's popularity
     const [copied, setCopied] = React.useState(false)
@@ -46,7 +48,7 @@ export default function Tip ({ tip: { id = "", title = "", code = "", language =
         // updateTipRating()
         ratingButton.current.classList.remove('bounce')
         ratingButton.current.classList.add('bounce')
-        const newRating = rating + 1;
+        const newRating = rating + 1
         localStorage.setItem(id, newRating)
         setRating(newRating)
     }
@@ -97,7 +99,7 @@ export default function Tip ({ tip: { id = "", title = "", code = "", language =
     )
 }
 
-Tip.displayName = "Tip"
+Tip.displayName = 'Tip'
 Tip.propTypes = {
-    tip:  PropTypes.string.isRequired
+    tip:  PropTypes.object.isRequired
 }

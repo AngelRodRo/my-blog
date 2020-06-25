@@ -1,14 +1,14 @@
-import firebase from "gatsby-plugin-firebase"
-const auth = firebase.auth;
-export const isBrowser = () => typeof window !== "undefined"
+import firebase from 'gatsby-plugin-firebase'
+const auth = firebase.auth
+export const isBrowser = () => typeof window !== 'undefined'
 
 export const getUser = () =>
-    isBrowser() && window.localStorage.getItem("user")
-        ? JSON.parse(window.localStorage.getItem("user"))
+    isBrowser() && window.localStorage.getItem('user')
+        ? JSON.parse(window.localStorage.getItem('user'))
         : {}
 
 export const setUser = user =>
-    isBrowser() && window.localStorage.setItem("user", JSON.stringify(user))
+    isBrowser() && window.localStorage.setItem('user', JSON.stringify(user))
 
 export const isLoggedIn = () => {
     const user = getUser()
@@ -16,10 +16,7 @@ export const isLoggedIn = () => {
 }
 
 export const logout = () => {
-    return new Promise(resolve => {
-        auth().signOut().then(function() {
-            setUser({});
-            resolve();
-        });
+    return auth().signOut().then(function() {
+        setUser({})
     })
 }

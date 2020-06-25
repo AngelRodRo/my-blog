@@ -1,9 +1,9 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
 
 class NotFoundPage extends React.Component {
     render() {
@@ -23,7 +23,7 @@ class NotFoundPage extends React.Component {
 NotFoundPage.propTypes = {
     data: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-};
+}
 
 
 export default NotFoundPage
