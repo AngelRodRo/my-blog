@@ -29,7 +29,7 @@ export default {
         }
         return tips
     },
-    async create({ title, description, code, language = "", tags = [], userId = "" }) {
+    async create({ title, description, code, language = "", tags = [] }) {
         const tipRef = await firestore.collection("tips").add({
             title,
             description,

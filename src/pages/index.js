@@ -1,12 +1,13 @@
 
 import React from "react"
 import { Link, graphql } from "gatsby"
+import PropTypes from 'prop-types'
 
-import Bio from "../components/bio"
-import Layout from "../components/Layout/blog"
-import SEO from "../components/seo"
+import Bio from "src/components/bio"
+import Layout from "src/components/Layout/blog"
+import SEO from "src/components/seo"
 
-import { rhythm } from "../utils/typography"
+import { rhythm } from "src/utils/typography"
 
 class Blog extends React.Component {
 
@@ -55,26 +56,32 @@ class Blog extends React.Component {
 export default Blog
 
 export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            description
-          }
+    query {
+        site {
+            siteMetadata {
+                title
+            }
         }
-      }
+        allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+            edges {
+                node {
+                excerpt
+                fields {
+                    slug
+                }
+                frontmatter {
+                    date(formatString: "MMMM DD, YYYY")
+                    title
+                    description
+                }
+                }
+            }
+        }
     }
-  }
 `
+
+Blog.propTypes = {
+    data: PropTypes.object.isRequired,
+    pageContext: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
+};

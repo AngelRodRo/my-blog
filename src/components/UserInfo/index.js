@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledLink = styled.a`
     display: flex;
@@ -28,5 +29,9 @@ export default function UserInfo ({ user }) {
         </StyledLink>
     )
 }
+
+UserInfo.propTypes = {
+    user: PropTypes.object.isRequired,
+};
 
 UserInfo.displayName = "UserInfo"

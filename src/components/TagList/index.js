@@ -1,6 +1,8 @@
 import React from 'react'
-import Tag from '../Tag'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
+import Tag from '../Tag'
 
 const Container = styled.div`
     display: flex;
@@ -8,7 +10,7 @@ const Container = styled.div`
     flex-wrap: wrap;
 `
 
-export default ({tags}) => {
+export default function TagList ({ tags }) {
     return (
         <Container>
             {tags.map((tag, idx) => <Tag key={idx} name={tag} />)}
@@ -16,3 +18,6 @@ export default ({tags}) => {
     )
 
 }
+TagList.propTypes = {
+    tags: PropTypes.array.isRequired,
+};

@@ -130,13 +130,28 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-alias-imports`,
+        resolve: `gatsby-plugin-alias-imports`,
+        options: {
+            alias: {
+                "src": path.resolve(__dirname, 'src'),
+            },
+            extensions: []
+        }
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/tips/*`] },
+    },
+    {
+      resolve: 'gatsby-plugin-eslint',
       options: {
-        alias: {
-          "@components": path.resolve(__dirname, 'src/components'),
-          "@datasources": path.resolve(__dirname, 'src/datasources')
-        },
-        extensions: []
+        test: /\.js$|\.jsx$/,
+        exclude: /(node_modules|.cache|public)/,
+        stages: ['develop'],
+        options: {
+          emitWarning: true,
+          failOnError: false
+        }
       }
     }
   ],
