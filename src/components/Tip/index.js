@@ -1,8 +1,10 @@
 import React from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
-import { anOldHope, github } from 'react-syntax-highlighter/dist/esm/styles/hljs'
+import { anOldHope } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Copy, Check, Star } from 'react-feather'
+import PropTypes from 'prop-types'
+
 import './bounce.css'
 
 import simpleIcons from 'simple-icons'
@@ -23,7 +25,7 @@ const mappedIcons = {
 
 export default function Tip ({ tip: { id = "", title = "", code = "", language = "", description = "", user, tags = [], created } }){
 
-    const localRating =  Number(localStorage.getItem(id, 0))
+    const localRating =  Number(localStorage.getItem(id, 0)) //eslint-disable-line
     const MAX_LOCALRATING = 5
 
     const ratingButton = React.useRef(null);
@@ -96,3 +98,6 @@ export default function Tip ({ tip: { id = "", title = "", code = "", language =
 }
 
 Tip.displayName = "Tip"
+Tip.propTypes = {
+    tip:  PropTypes.string.isRequired
+}

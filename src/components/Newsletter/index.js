@@ -26,7 +26,7 @@ const customStyles = {
     },
 }
 
-export default () => {
+export default function Newsletter () {
     const { register, errors, handleSubmit } = useForm()
     const MySwal = withReactContent(Swal)
 
@@ -91,3 +91,5 @@ export default () => {
         </div>
     );
 }
+
+Newsletter.displayName = "Newsletter"

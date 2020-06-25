@@ -1,11 +1,22 @@
 {
     "parser": "babel-eslint",
+    "rules": {
+        "strict": 0,
+        "quotes": [2, "single", { "avoidEscape": true }],
+        "semi": [2, "never"]
+    },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended",
-        "airbnb"
+        "plugin:react/recommended"
     ],
-    "rules": {
-        "semi": [2, "never"]
+    "globals": {
+        "setTimeout": true,
+        "console": true,
+        "process": true,
+        "window": true,
+        "localStorage": true,
+        "fetch": true,
+        "require": true,
+        "Promise": true
     }
 }

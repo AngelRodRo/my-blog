@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Container = styled.div`
     height: 30px;
@@ -26,8 +27,7 @@ const HEXColors = [
     "#44d3f8",
 ]
 
-export default ({name}) => {
-
+export default function Tag ({ name }) {
     const randNum = Math.floor(Math.random() * (10))
     const color = HEXColors[randNum]
 
@@ -36,4 +36,10 @@ export default ({name}) => {
             {name}
         </Container>
     )
+}
+
+Tag.displayName = "Tag"
+
+Tag.propTypes = {
+    name: PropTypes.string.isRequired,
 }

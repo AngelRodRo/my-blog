@@ -1,7 +1,8 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import AceEditor from "react-ace"
-import Select from 'react-select';
+import Select from 'react-select'
+import { navigate } from "gatsby"
 
 import "./form.css"
 
@@ -20,7 +21,7 @@ import tipDS from '../../datasources/tips';
 
 //TODO: Implement well-built validations
 export default () => {
-    const { register, handleSubmit, watch, errors } = useForm();
+    const { register, handleSubmit } = useForm();
     let code = "";
     const colourOptions = [
         { value: 'snippet', label: 'Snippet' },
@@ -34,10 +35,11 @@ export default () => {
 
     const onSubmit = async ({ title, description }) => {
         if (!code) {
-            alert('Añade codigo antes de continuar')
+            //alert('Añade codigo antes de continuar')
             return;
         }
         await tipDS.create({ title, description, code });
+        navigate("/tips")
     }
     function onChange(newValue) {
         code = newValue;

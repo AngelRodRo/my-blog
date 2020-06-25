@@ -1,14 +1,10 @@
 import React from 'react'
-import UserInfo from '@components/UserInfo'
 import { LogOut } from 'react-feather'
+import PropTypes from 'prop-types'
 
-import userDS from '@datasources/user.js';
+import UserInfo from 'src/components/UserInfo'
 
-export default ({ user }) => {
-
-    const logout = () => {
-        userDS.logout();
-    }
+export default function Profile ({ user, logout }) {
 
     return (
         <div>
@@ -18,4 +14,10 @@ export default ({ user }) => {
             <button onClick={logout}><LogOut /></button>
         </div>
     )
+}
+
+Profile.displayName = "Profile"
+Profile.propTypes = {
+    user: PropTypes.object.isRequired,
+    logout: PropTypes.func.isRequired,
 }
