@@ -1,11 +1,11 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Bio from "src/components/bio"
-import Layout from "src/components/Layout/blog"
-import SEO from "src/components/seo"
-import { rhythm } from "src/utils/typography"
+import Bio from 'src/components/bio'
+import Layout from 'src/components/Layout/blog'
+import SEO from 'src/components/seo'
+import { rhythm } from 'src/utils/typography'
 
 class Blog extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Blog extends React.Component {
     return (
         <Layout location={this.props.location} title={siteTitle}>
             <SEO title="Todos los articulos" />
-                <div style={{ margin: "20px 0 40px" }}>
+                <div style={{ margin: '20px 0 40px' }}>
                     {posts.map(({ node }) => {
                         const title = node.frontmatter.title || node.fields.slug
                         return (
@@ -27,7 +27,7 @@ class Blog extends React.Component {
                             }}
                             >
                             <Link
-                                style={{ boxShadow: `none` }}
+                                style={{ boxShadow: 'none' }}
                                 to={`/blog${node.fields.slug}`}
                             >
                                 {title}
@@ -79,4 +79,4 @@ Blog.propTypes = {
     data: PropTypes.object.isRequired,
     pageContext: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-};
+}

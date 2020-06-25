@@ -1,12 +1,12 @@
-import React from "react"
-import { Link } from "gatsby"
-import styled from "styled-components"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { Moon, Sun } from 'react-feather'
 import PropTypes from 'prop-types'
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from 'src/utils/typography'
 
-import Newsletter from '../components/Newsletter';
+import Newsletter from '../components/Newsletter'
 
 class Layout extends React.Component {
 
@@ -28,11 +28,11 @@ class Layout extends React.Component {
                 >
                     <Link
                     style={{
-                        boxShadow: `none`,
-                        textDecoration: `none`,
-                        color: `inherit`,
+                        boxShadow: 'none',
+                        textDecoration: 'none',
+                        color: 'inherit',
                     }}
-                    to={location.pathname === blogPath ? `/blog/` : `/`}
+                    to={location.pathname === blogPath ? '/blog/' : '/'}
                     >
                     {title}
                     </Link>
@@ -42,17 +42,17 @@ class Layout extends React.Component {
             header = (
                 <h3
                     style={{
-                    fontFamily: `Montserrat, sans-serif`,
+                    fontFamily: 'Montserrat, sans-serif',
                     marginTop: 0,
                     }}
                 >
                     <Link
                     style={{
-                        boxShadow: `none`,
-                        textDecoration: `none`,
-                        color: `inherit`,
+                        boxShadow: 'none',
+                        textDecoration: 'none',
+                        color: 'inherit',
                     }}
-                    to={`/blog/`}
+                    to={'/blog/'}
                     >
                     {title}
                     </Link>
@@ -65,7 +65,7 @@ class Layout extends React.Component {
                 <DarkModeToggle>
                     <ThemeToggler>
                         {({ theme, toggleTheme }) => {
-                                const isDark = theme === 'dark';
+                                const isDark = theme === 'dark'
                                 return (
                                     <div
                                     style={{ color: isDark? 'white' : 'black'  }}
@@ -79,8 +79,8 @@ class Layout extends React.Component {
                 </DarkModeToggle>
                 <div
                 style={{
-                    marginLeft: `auto`,
-                    marginRight: `auto`,
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
                     maxWidth: rhythm(24),
                     padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                     backgroundColor: 'var(--bg)',
@@ -125,6 +125,6 @@ Layout.propTypes = {
     location: PropTypes.object,
     title: PropTypes.string,
     children: PropTypes.object,
-};
+}
 
 export default Layout

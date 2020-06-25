@@ -1,8 +1,8 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import { rhythm, scale } from "src/utils/typography"
+import { rhythm, scale } from 'src/utils/typography'
 import Newsletter from 'src/components/Newsletter'
 
 import MainLayout from './index'
@@ -13,7 +13,6 @@ class BlogLayout extends React.Component {
         const rootPath = `${__PATH_PREFIX__}/` //eslint-disable-line
         const blogPath = `${__PATH_PREFIX__}/blog` //eslint-disable-line
         let header
-
 
         if ([rootPath, blogPath].includes(location.pathname)) {
             header = (
@@ -26,11 +25,11 @@ class BlogLayout extends React.Component {
                 >
                     <Link
                         style={{
-                            boxShadow: `none`,
-                            textDecoration: `none`,
-                            color: `inherit`,
+                            boxShadow: 'none',
+                            textDecoration: 'none',
+                            color: 'inherit',
                         }}
-                        to={location.pathname === blogPath ? `/blog/` : `/`}
+                        to={location.pathname === blogPath ? '/blog/' : '/'}
                     >
                     {title}
                 </Link>
@@ -40,17 +39,17 @@ class BlogLayout extends React.Component {
             header = (
                 <h3
                     style={{
-                    fontFamily: `Montserrat, sans-serif`,
+                    fontFamily: 'Montserrat, sans-serif',
                     marginTop: 0,
                     }}
                 >
                     <Link
                     style={{
-                        boxShadow: `none`,
-                        textDecoration: `none`,
-                        color: `inherit`,
+                        boxShadow: 'none',
+                        textDecoration: 'none',
+                        color: 'inherit',
                     }}
-                    to={`/blog/`}
+                    to={'/blog/'}
                     >
                     {title}
                     </Link>
@@ -62,8 +61,8 @@ class BlogLayout extends React.Component {
             <MainLayout>
                 <div
                     style={{
-                        marginLeft: `auto`,
-                        marginRight: `auto`,
+                        marginLeft: 'auto',
+                        marginRight: 'auto',
                         maxWidth: rhythm(24),
                         padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
                         backgroundColor: 'var(--bg)',
