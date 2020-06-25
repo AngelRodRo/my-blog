@@ -60,7 +60,7 @@ export default function Newsletter () {
         addToMailchimp(data.email)
         reactLocalStorage.set('suscribed', true)
         closeModal()
-        showSuccessAlert();
+        showSuccessAlert()
     }
 
     return (
@@ -89,7 +89,7 @@ export default function Newsletter () {
                 </Styled.Container>
             </Modal>
         </div>
-    );
+    )
 }
 
-Newsletter.displayName = "Newsletter"
+Newsletter.displayName = 'Newsletter'

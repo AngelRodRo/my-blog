@@ -32,6 +32,6 @@ export default function UserInfo ({ user }) {
 
 UserInfo.propTypes = {
     user: PropTypes.object.isRequired,
-};
+}
 
-UserInfo.displayName = "UserInfo"
+UserInfo.displayName = 'UserInfo'

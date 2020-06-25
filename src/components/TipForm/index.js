@@ -1,33 +1,32 @@
 import React from 'react'
-import { useForm } from "react-hook-form"
-import AceEditor from "react-ace"
+import { useForm } from 'react-hook-form'
+import AceEditor from 'react-ace'
 import Select from 'react-select'
-import { navigate } from "gatsby"
+import { navigate } from 'gatsby'
 
-import "./form.css"
+import './form.css'
 
 import Styled from './styles'
 
-import "ace-builds/src-noconflict/mode-javascript"
-import "ace-builds/src-noconflict/theme-monokai"
+import 'ace-builds/src-noconflict/mode-javascript'
+import 'ace-builds/src-noconflict/theme-monokai'
 
 import languages from './ace-lngs-installer'
 
 const capitalize = ([first, ...rest]) =>
-    first.toUpperCase() + rest;
+    first.toUpperCase() + rest
 
-import tipDS from '../../datasources/tips';
-
+import tipDS from '../../datasources/tips'
 
 //TODO: Implement well-built validations
 export default () => {
-    const { register, handleSubmit } = useForm();
-    let code = "";
+    const { register, handleSubmit } = useForm()
+    let code = ''
     const colourOptions = [
         { value: 'snippet', label: 'Snippet' },
         { value: 'tip', label: 'Tip', },
-    ];
-    const [lang, setLang] = React.useState('javascript');
+    ]
+    const [lang, setLang] = React.useState('javascript')
 
     const changeLng = (e) => {
         setLang(e.target.value)
@@ -36,13 +35,13 @@ export default () => {
     const onSubmit = async ({ title, description }) => {
         if (!code) {
             //alert('Añade codigo antes de continuar')
-            return;
+            return
         }
-        await tipDS.create({ title, description, code });
-        navigate("/tips")
+        await tipDS.create({ title, description, code })
+        navigate('/tips')
     }
     function onChange(newValue) {
-        code = newValue;
+        code = newValue
     }
     return (
         <>

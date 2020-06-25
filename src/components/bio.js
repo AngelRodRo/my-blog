@@ -5,21 +5,21 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled from "styled-components"
+import React from 'react'
+import { StaticQuery, graphql } from 'gatsby'
+import Image from 'gatsby-image'
+import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import { rhythm } from "../utils/typography"
-import youtube from "../icons/youtube.svg"
-import github from "../icons/github.svg"
-import facebook from "../icons/facebook.svg"
-import instagram from "../icons/instagram.svg"
+import { rhythm } from '../utils/typography'
+import youtube from '../icons/youtube.svg'
+import github from '../icons/github.svg'
+import facebook from '../icons/facebook.svg'
+import instagram from '../icons/instagram.svg'
 
 
 const SocialLink = props => {
-    const {imgSrc, href} = props;
+    const {imgSrc, href} = props
     const Link = styled.a`
         margin: 0px 3px;
         text-decoration: none;
@@ -43,19 +43,19 @@ function Bio() {
     const socialLinks = [
         {
             imgSrc: facebook,
-            href: "https://facebook.com/practidev"
+            href: 'https://facebook.com/practidev'
         },
         {
             imgSrc: instagram,
-            href: "https://www.instagram.com/practidev19/"
+            href: 'https://www.instagram.com/practidev19/'
         },
         {
             imgSrc: youtube,
-            href: "https://www.youtube.com/channel/UCT49h0K1819qLW4sNiWgvGw"
+            href: 'https://www.youtube.com/channel/UCT49h0K1819qLW4sNiWgvGw'
         },
         {
             imgSrc: github,
-            href: "https://github.com/AngelRodRo"
+            href: 'https://github.com/AngelRodRo'
         }
     ]
 
@@ -65,7 +65,7 @@ function Bio() {
             href={href}
             imgSrc={imgSrc}
         />
-    );
+    )
 
     return (
         <StaticQuery
@@ -81,10 +81,10 @@ function Bio() {
                                 marginRight: rhythm(1 / 2),
                                 marginBottom: 0,
                                 minWidth: 50,
-                                borderRadius: `100%`,
+                                borderRadius: '100%',
                             }}
                             imgStyle={{
-                                borderRadius: `50%`,
+                                borderRadius: '50%',
                             }}
                         />
                         <div>

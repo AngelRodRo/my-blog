@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 import { ThemeToggler } from 'gatsby-plugin-dark-mode'
 import { Moon, Sun } from 'react-feather'
 
@@ -13,14 +13,14 @@ class Layout extends React.Component {
                 <DarkModeToggle>
                 <ThemeToggler>
                     {({ theme, toggleTheme }) => {
-                    const isDark = theme === 'dark';
-                    return (
-                        <div
-                        style={{ color: isDark? 'white' : 'black'  }}
-                        onClick={() => toggleTheme(isDark ? 'light' : 'dark')}
-                        >{ isDark ? <Sun /> : <Moon />}
-                        </div>)
-                    }
+                        const isDark = theme === 'dark'
+                        return (
+                            <div
+                            style={{ color: isDark? 'white' : 'black'  }}
+                            onClick={() => toggleTheme(isDark ? 'light' : 'dark')}
+                            >{ isDark ? <Sun /> : <Moon />}
+                            </div>)
+                        }
                     }
                 </ThemeToggler>
                 </DarkModeToggle>

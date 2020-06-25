@@ -1,13 +1,13 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Disqus } from 'gatsby-plugin-disqus'
 import PropTypes from 'prop-types'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from 'src/components/bio'
+import Layout from 'src/components/layout'
+import SEO from 'src/components/seo'
+import { rhythm, scale } from 'src/utils/typography'
 
 class BlogPostTemplate extends React.Component {
     render() {
@@ -30,7 +30,7 @@ class BlogPostTemplate extends React.Component {
             <p
                 style={{
                     ...scale(-1 / 5),
-                    display: `block`,
+                    display: 'block',
                     marginBottom: rhythm(1),
                     marginTop: rhythm(-1),
                 }}
@@ -47,10 +47,10 @@ class BlogPostTemplate extends React.Component {
             <Disqus config={disqusConfig} />
             <ul
                 style={{
-                    display: `flex`,
-                    flexWrap: `wrap`,
-                    justifyContent: `space-between`,
-                    listStyle: `none`,
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    justifyContent: 'space-between',
+                    listStyle: 'none',
                     padding: 0,
                 }}
             >
@@ -101,4 +101,4 @@ BlogPostTemplate.propTypes = {
     data: PropTypes.object.isRequired,
     pageContext: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
-};
+}

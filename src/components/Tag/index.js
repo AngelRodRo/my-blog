@@ -15,16 +15,16 @@ const Container = styled.div`
 `
 
 const HEXColors = [
-    "#3fa3b6",
-    "#dd390f",
-    "#42646a",
-    "#21cf5a",
-    "#12ba13",
-    "#6343bc",
-    "#a60b7a",
-    "#871255",
-    "#175d9d",
-    "#44d3f8",
+    '#3fa3b6',
+    '#dd390f',
+    '#42646a',
+    '#21cf5a',
+    '#12ba13',
+    '#6343bc',
+    '#a60b7a',
+    '#871255',
+    '#175d9d',
+    '#44d3f8',
 ]
 
 export default function Tag ({ name }) {
@@ -38,7 +38,7 @@ export default function Tag ({ name }) {
     )
 }
 
-Tag.displayName = "Tag"
+Tag.displayName = 'Tag'
 
 Tag.propTypes = {
     name: PropTypes.string.isRequired,

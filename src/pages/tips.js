@@ -1,12 +1,11 @@
-import React from "react"
-import { Router } from "@reach/router"
-
-import Layout from "src/components/Layout/tips"
+import React from 'react'
+import { Router } from '@reach/router'
 
 import Index from 'src/views/Tips'
-import Create from 'src/views/Tips/create';
+import Create from 'src/views/Tips/create'
 
-import PrivateRoute from "src/components/privateRoute"
+import Layout from 'src/components/Layout/tips'
+import PrivateRoute from 'src/components/privateRoute'
 
 export default function TipsPage() {
     return (
@@ -24,4 +23,4 @@ export default function TipsPage() {
     )
 }
 
-TipsPage.displayName = "TipsPage"
+TipsPage.displayName = 'TipsPage'
