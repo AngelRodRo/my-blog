@@ -4,10 +4,9 @@ import { anOldHope } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Copy, Check, Star } from 'react-feather'
 import PropTypes from 'prop-types'
+import simpleIcons from 'simple-icons'
 
 import './bounce.css'
-
-import simpleIcons from 'simple-icons'
 
 import UserInfo from 'src/components/UserInfo'
 import TagList from 'src/components/TagList'

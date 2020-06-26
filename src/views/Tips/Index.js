@@ -2,6 +2,8 @@ import React from 'react'
 
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
+import FloatButton from 'src/components/base/FloatButton'
+
 import Tip from 'src/components/Tip'
 import Profile from 'src/components/Profile'
 import Login from 'src/components/Login'
@@ -56,6 +58,7 @@ export default function Index() {
                     />
             }
             <TipsList />
+            <FloatButton />
         </>
     )
 }
