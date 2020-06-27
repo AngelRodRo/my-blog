@@ -16,9 +16,9 @@ class Layout extends React.Component {
                         const isDark = theme === 'dark'
                         return (
                             <div
-                            style={{ color: isDark? 'white' : 'black'  }}
-                            onClick={() => toggleTheme(isDark ? 'light' : 'dark')}
-                            >{ isDark ? <Sun /> : <Moon />}
+                                style={{ color: isDark? 'white' : 'black'  }}
+                                onClick={() => toggleTheme(isDark ? 'light' : 'dark')}
+                                >{ isDark ? <Sun /> : <Moon />}
                             </div>)
                         }
                     }

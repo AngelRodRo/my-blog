@@ -9,6 +9,9 @@ const StyledButton = Styled.div`
     background: white;
     right: 0;
     bottom: 0;
+    cursor: pointer;
+
+    margin: 20px;
 
     &:before{
         content: '+';

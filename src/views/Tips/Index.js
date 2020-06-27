@@ -1,8 +1,10 @@
 import React from 'react'
+import Styled from 'styled-components'
 
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
 import FloatButton from 'src/components/base/FloatButton'
+import Loader from 'src/components/base/Loader'
 
 import Tip from 'src/components/Tip'
 import Profile from 'src/components/Profile'
@@ -11,11 +13,20 @@ import Login from 'src/components/Login'
 import userDS from 'src/datasources/user'
 import tipDS from 'src/datasources/tips'
 
+const InfoContainer = Styled.div`
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+`
+
 export default function Index() {
 
     const [tips, setTips] = React.useState([])
     const [localUser, setLocalUser] = React.useState(getUser())
     const [isLogged, setIsLogged] = React.useState(isLoggedIn())
+    const [isLoading, setIsLoading] = React.useState(false)
 
     userDS.inspect(user => {
         if (user) {
@@ -25,6 +36,7 @@ export default function Index() {
 
     React.useEffect(() => {
         tipDS.list().then(setTips)
+        setIsLoading(false)
     }, [])
 
     const TipsList = () => tips.map(tip =>
@@ -46,7 +58,9 @@ export default function Index() {
     }
 
     return (
-        <>
+        <>  
+            <Loader />
+            <InfoContainer>
             {
                 !isLogged?
                     <Login
@@ -57,6 +71,7 @@ export default function Index() {
                         logout={doLogout}
                     />
             }
+            </InfoContainer>
             <TipsList />
             <FloatButton />
         </>
