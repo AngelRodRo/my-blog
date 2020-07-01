@@ -1,16 +1,25 @@
 import React from 'react'
-import { rhythm } from 'src/utils/typography'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 import MainLayout from './index'
+import { rhythm } from 'src/utils/typography'
+import Loading from 'react-fullscreen-loading'
 
 class TipsLayout extends React.Component {
 
     render() {
-        const { children } = this.props
-
+        const { children, isLoading } = this.props
         return (
             <MainLayout>
+                { isLoading?
+                    <Loading
+                        loading
+                        background="#ffff"
+                        loaderColor="#3498db"
+                    /> :
+                    null
+                }
                 <div
                     style={{
                         fontFamily: 'Verdana',
@@ -30,7 +39,10 @@ class TipsLayout extends React.Component {
 }
 
 TipsLayout.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.any,
+    isLoading: PropTypes.bool,
 }
 
-export default TipsLayout
+const mapStateToProps = state => ({ isLoading: state.app.isLoading })
+
+export default connect(mapStateToProps)(TipsLayout)

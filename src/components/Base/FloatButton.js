@@ -1,5 +1,6 @@
 import React from 'react'
 import Styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const StyledButton = Styled.div`
     position: absolute;
@@ -22,8 +23,10 @@ const StyledButton = Styled.div`
     }
 `
 
-export default function FloatButton () {
-    return ( <StyledButton />)
+export default function FloatButton ({ onClick }) {
+    return ( <StyledButton onClick={onClick} />)
 }
-
+FloatButton.propTypes = {
+    onClick: PropTypes.func,
+}
 FloatButton.displayName = 'FloatButton'

@@ -52,6 +52,7 @@
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.6",
     "react-feather": "^2.0.8",
+    "react-fullscreen-loading": "^0.0.4",
     "react-google-button": "^0.7.1",
     "react-helmet": "^5.2.0",
     "react-hook-form": "^5.7.2",

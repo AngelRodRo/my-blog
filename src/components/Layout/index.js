@@ -34,7 +34,7 @@ class Layout extends React.Component {
 }
 
 Layout.propTypes = {
-    children: PropTypes.object,
+    children: PropTypes.any,
 }
 
 const DarkModeToggle = styled.div`
