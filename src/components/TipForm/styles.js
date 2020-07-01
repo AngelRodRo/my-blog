@@ -5,6 +5,9 @@ const styles = {}
 styles.Form = styled.form`
     display: flex;
     flex-direction: column;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
 `
 styles.Select = styled.select`
     margin: 10px 0px !important;
