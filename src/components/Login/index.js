@@ -1,6 +1,7 @@
 import React from 'react'
 import GoogleButton from 'react-google-button'
 import PropTypes from 'prop-types'
+import { toast } from 'react-toastify'
 
 import { useDispatch } from 'react-redux'
 
@@ -13,14 +14,16 @@ export default function Login ({ updateUser }) {
 
     const googleSignIn = async e => {
         e.preventDefault()
+        toggleIsLoading()
         try {
-            toggleIsLoading()
             const user = await userDS.login()
             updateUser(user)
-            toggleIsLoading()
+            toast.success('Inicio de sesión exitoso !!')
         } catch (e) {
+            toast.error('Error en el inicio de sesión, intentelo de nuevo')
             console.log(e)
         }
+        toggleIsLoading()
     }
 
     return (
