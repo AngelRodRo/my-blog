@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 
+import { toast } from 'react-toastify'
+
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
 import Tip from 'src/components/Tip'
@@ -54,8 +56,17 @@ const Index = ({ toggleIsLoading }) => {
     })
 
     React.useEffect(() => {
-        toggleIsLoading()
-        tipDS.list().then(setTips).then(toggleIsLoading)
+        const fetchTips = async () => {
+            toggleIsLoading()
+            try {
+                const tips = await tipDS.list()
+                setTips(tips)
+            } catch (e) {
+                toast.error('Error al recuperar los tips, intentelo de nuevo mas tarde')
+            }
+            toggleIsLoading()
+        }
+        fetchTips()
     }, [])
 
     const TipsList = () => tips.map(tip =>

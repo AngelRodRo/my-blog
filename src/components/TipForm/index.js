@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form'
 import AceEditor from 'react-ace'
 import Select from 'react-select'
 import { navigate } from 'gatsby'
+import { toast } from 'react-toastify'
 
 import './form.css'
 
@@ -33,12 +34,17 @@ export default () => {
     }
 
     const onSubmit = async ({ title, description }) => {
-        if (!code) {
-            //alert('Añade codigo antes de continuar')
-            return
+        try {
+            if (!code) {
+                //alert('Añade codigo antes de continuar')
+                return
+            }
+            await tipDS.create({ title, description, code })
+            navigate('/tips')
+            toast.success('Se añadio tu tip!')
+        } catch (e) {
+            toast.error('Error al crear un nuevo tip, intentelo de nuevo')
         }
-        await tipDS.create({ title, description, code })
-        navigate('/tips')
     }
     function onChange(newValue) {
         code = newValue
