@@ -1,4 +1,8 @@
 import React from 'react'
+import Styled from 'styled-components'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { navigate } from 'gatsby'
 
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
@@ -9,7 +13,35 @@ import Login from 'src/components/Login'
 import userDS from 'src/datasources/user'
 import tipDS from 'src/datasources/tips'
 
-export default function Index() {
+const InfoContainer = Styled.div`
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+`
+const FloatButton = Styled.div`
+    position: absolute;
+    width: 50px;
+    height: 50px !important;
+    border-radius: 50%;
+    background: white;
+    right: 0;
+    bottom: 0;
+    cursor: pointer;
+
+    margin: 20px;
+
+    &:before{
+        content: '+';
+        display: flex;
+        align-items: center;
+        height: 100%;
+        justify-content: center;
+    }
+`
+
+const Index = ({ toggleIsLoading }) => {
 
     const [tips, setTips] = React.useState([])
     const [localUser, setLocalUser] = React.useState(getUser())
@@ -22,7 +54,8 @@ export default function Index() {
     })
 
     React.useEffect(() => {
-        tipDS.list().then(setTips)
+        toggleIsLoading()
+        tipDS.list().then(setTips).then(toggleIsLoading)
     }, [])
 
     const TipsList = () => tips.map(tip =>
@@ -37,14 +70,17 @@ export default function Index() {
         setLocalUser(user)
     }
 
-    const doLogout = () => {
+    const doLogout = async () => {
+        toggleIsLoading()
         setIsLogged(false)
         setUser({})
-        logout()
+        await logout()
+        toggleIsLoading()
     }
 
     return (
         <>
+            <InfoContainer>
             {
                 !isLogged?
                     <Login
@@ -55,10 +91,22 @@ export default function Index() {
                         logout={doLogout}
                     />
             }
+            </InfoContainer>
             <TipsList />
+            {isLogged? <FloatButton onClick={() => navigate('/tips/create')} /> : null}
         </>
     )
 }
 
 Index.displayName = 'TipIndex'
+Index.propTypes = {
+    toggleIsLoading: PropTypes.func,
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        toggleIsLoading: () => dispatch({ type: 'TOGGLE_ISLOADING' }),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Index)

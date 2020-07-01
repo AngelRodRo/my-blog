@@ -124,7 +124,7 @@ Layout.propTypes = {
     name: PropTypes.string.isRequired,
     location: PropTypes.object,
     title: PropTypes.string,
-    children: PropTypes.object,
+    children: PropTypes.any,
 }
 
 export default Layout

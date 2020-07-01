@@ -1,8 +1,14 @@
 import React from 'react'
 import { LogOut } from 'react-feather'
 import PropTypes from 'prop-types'
+import Styled from 'styled-components'
 
 import UserInfo from 'src/components/UserInfo'
+
+const LogoutContainer = Styled.div`
+    color: var(--textNormal);
+    cursor: pointer;
+`
 
 export default function Profile ({ user, logout }) {
 
@@ -11,7 +17,9 @@ export default function Profile ({ user, logout }) {
             <UserInfo
                 user={user}
             />
-            <button onClick={logout}><LogOut /></button>
+            <LogoutContainer onClick={logout}>
+                <LogOut/>
+            </LogoutContainer>
         </>
     )
 }

@@ -8,6 +8,7 @@ const StyledLink = styled.a`
     color: inherit;
     margin: 10px;
     box-shadow: none;
+    color: var(--textNormal) !important;
 
     color: white;
     height: 30px;

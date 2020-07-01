@@ -1,18 +1,18 @@
 const initialState = {
-  isDarkMode: false,
-};
+    isLoading: false,
+}
 
-const TOGGLE_DARKMODE = 'TOGGLE_DARKMODE';
+const TOGGLE_ISLOADING = 'TOGGLE_ISLOADING'
 
-export const toggleDarkMode = isDarkMode => ({
-  type: TOGGLE_DARKMODE, isDarkMode
-});
+export const toggleIsLoading = isLoading => ({
+    type: TOGGLE_ISLOADING, isLoading
+})
 
 export default (state = initialState, action) => {
-  switch (action.type) {
-    case TOGGLE_DARKMODE:
-      return { ...state, isDarkMode: action.isDarkMode };
-    default:
-      return state;
-  }
-};
+    switch (action.type) {
+        case TOGGLE_ISLOADING:
+            return { ...state, isLoading: !state.isLoading }
+        default:
+            return state
+    }
+}
