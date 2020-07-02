@@ -27,7 +27,7 @@ export default {
         }
         return tips
     },
-    async create({ title, description, code, language = '', tags = [], uid }) {
+    async create({ title, description, code, language = '', tags = [], uid, }) {
         await firestore.collection('tips').add({
             title,
             description,
@@ -35,7 +35,7 @@ export default {
             language,
             tags,
             uid,
-            created: new Date()
+            created: firebase.firestore.Timestamp.fromDate(new Date()),
         })
     }
 }

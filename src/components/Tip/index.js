@@ -35,8 +35,7 @@ export default function Tip ({ tip:
     //TODO: Add rating to show tip's popularity
     const [copied, setCopied] = React.useState(false)
     const [rating, setRating] = React.useState(0)
-
-    const date = utils.formatDate(created)
+    const date = utils.formatDate(created.toDate())
     const icon = simpleIcons.get(mappedIcons[language? language.toLowerCase() : 'javascript'])
 
     const copiedDelay = () => {

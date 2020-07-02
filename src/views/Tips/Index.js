@@ -23,7 +23,7 @@ const InfoContainer = Styled.div`
     margin: 0 auto;
 `
 const FloatButton = Styled.div`
-    position: absolute;
+    position: fixed;
     width: 50px;
     height: 50px !important;
     border-radius: 50%;
