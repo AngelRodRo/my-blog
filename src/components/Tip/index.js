@@ -64,7 +64,7 @@ export default function Tip ({ tip:
                 <TagList tags={tags}></TagList>
             </Styled.Info>
             <Styled.CodeSection>
-                <SyntaxHighlighter customStyle={{height: '200px'}} language={language} style={anOldHope} >
+                <SyntaxHighlighter customStyle={{height: '200px', padding: '2em'}} language={language} style={anOldHope} >
                     {code}
                 </SyntaxHighlighter>
                 <Styled.LngIcon>
