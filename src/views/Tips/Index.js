@@ -16,7 +16,7 @@ import userDS from 'src/datasources/user'
 import tipDS from 'src/datasources/tips'
 
 const InfoContainer = Styled.div`
-    width: 600px;
+    max-width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-between;
