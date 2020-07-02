@@ -17,6 +17,7 @@ export default function Login ({ updateUser }) {
         toggleIsLoading()
         try {
             const user = await userDS.login()
+            console.log(user)
             updateUser(user)
             toast.success('Inicio de sesión exitoso !!')
         } catch (e) {

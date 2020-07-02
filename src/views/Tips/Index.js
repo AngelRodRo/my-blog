@@ -62,6 +62,7 @@ const Index = ({ toggleIsLoading }) => {
                 const tips = await tipDS.list()
                 setTips(tips)
             } catch (e) {
+                console.log(e)
                 toast.error('Error al recuperar los tips, intentelo de nuevo mas tarde')
             }
             toggleIsLoading()
