@@ -1,32 +1,46 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import AceEditor from 'react-ace'
-import Select from 'react-select'
 import { navigate } from 'gatsby'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
+
+
+import { getUser } from 'src/utils/auth'
+
+import AceEditor from 'react-ace'
+import Select from 'react-select'
+
+import 'ace-builds/src-noconflict/mode-javascript'
+import 'ace-builds/src-noconflict/theme-monokai'
 
 import './form.css'
 
 import Styled from './styles'
-
-import 'ace-builds/src-noconflict/mode-javascript'
-import 'ace-builds/src-noconflict/theme-monokai'
 
 import languages from './ace-lngs-installer'
 
 const capitalize = ([first, ...rest]) =>
     first.toUpperCase() + rest
 
-import tipDS from '../../datasources/tips'
+import tipDS from 'src/datasources/tips'
+
+const tagOptions = [
+    { value: 'snippet', label: 'Snippet' },
+    { value: 'tip', label: 'Tip', },
+]
 
 //TODO: Implement well-built validations
-export default () => {
+export default function TipForm () {
     const { register, handleSubmit } = useForm()
+    const user = getUser()
+
+    const dispatch = useDispatch()
+    const toggleIsLoading = () => dispatch({ type: 'TOGGLE_ISLOADING' })
+
     let code = ''
-    const colourOptions = [
-        { value: 'snippet', label: 'Snippet' },
-        { value: 'tip', label: 'Tip', },
-    ]
+    let tags = []
+
+
     const [lang, setLang] = React.useState('javascript')
 
     const changeLng = (e) => {
@@ -36,11 +50,13 @@ export default () => {
     const onSubmit = async ({ title, description }) => {
         try {
             if (!code) {
-                //alert('Añade codigo antes de continuar')
+                alert('Añade codigo antes de continuar')
                 return
             }
-            await tipDS.create({ title, description, code })
+            toggleIsLoading()
+            await tipDS.create({ title, description, language: lang, code, tags, uid: user.uid })
             navigate('/tips')
+            toggleIsLoading()
             toast.success('Se añadio tu tip!')
         } catch (e) {
             toast.error('Error al crear un nuevo tip, intentelo de nuevo')
@@ -49,6 +65,11 @@ export default () => {
     function onChange(newValue) {
         code = newValue
     }
+
+    function handleTagChange(values) {
+        tags = values.map(val => val.value)
+    }
+
     return (
         <>
             <Styled.Form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -80,9 +101,9 @@ export default () => {
                 >
                     <Select
                         isMulti
-                        defaultValue={[colourOptions[2], colourOptions[3]]}
-                        name="colors"
-                        options={colourOptions}
+                        name="tags"
+                        onChange={handleTagChange}
+                        options={tagOptions}
                         className="basic-multi-select"
                         classNamePrefix="select"
                     />
@@ -92,3 +113,5 @@ export default () => {
         </>
     )
 }
+
+TipForm.displayName = 'TipForm'

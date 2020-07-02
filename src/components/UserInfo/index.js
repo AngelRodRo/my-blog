@@ -26,7 +26,7 @@ export default function UserInfo ({ user }) {
     return (
         <StyledLink href={user.profileLink}>
             <StyledProfileImg src={user.picture} />
-            <span>{userFullname}</span>
+            <span style={{ lineHeight: '30px' }}>{userFullname}</span>
         </StyledLink>
     )
 }

@@ -18,12 +18,12 @@ export default {
     async login() {
         const provider = new firebase.auth.GoogleAuthProvider()
         const user = await firebase.auth().signInWithPopup(provider)
-        const docRef = firestore.collection('users').doc(firebase.auth().currentUser.uid)
+        const {uid} = firebase.auth().currentUser
+        const docRef = firestore.collection('users').doc(uid)
         const doc = await docRef.get()
-        if (doc.exists) {
-            return getUserDetails(user)
-        } else{
-            return this.create(user)
+        return {
+            uid,
+            ...(doc.exists? getUserDetails(user) : this.create(user))
         }
     },
     inspect(cb) {

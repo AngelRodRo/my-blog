@@ -23,7 +23,7 @@ const InfoContainer = Styled.div`
     margin: 0 auto;
 `
 const FloatButton = Styled.div`
-    position: absolute;
+    position: fixed;
     width: 50px;
     height: 50px !important;
     border-radius: 50%;
@@ -62,6 +62,7 @@ const Index = ({ toggleIsLoading }) => {
                 const tips = await tipDS.list()
                 setTips(tips)
             } catch (e) {
+                console.log(e)
                 toast.error('Error al recuperar los tips, intentelo de nuevo mas tarde')
             }
             toggleIsLoading()

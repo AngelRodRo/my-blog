@@ -19,7 +19,8 @@ const mappedIcons = {
     php: 'PHP',
     laravel: 'Laravel',
     vue: 'Vue.js',
-    html: 'HTML5'
+    html: 'HTML5',
+    java: 'java',
 }
 
 export default function Tip ({ tip:
@@ -34,9 +35,8 @@ export default function Tip ({ tip:
     //TODO: Add rating to show tip's popularity
     const [copied, setCopied] = React.useState(false)
     const [rating, setRating] = React.useState(0)
-
-    const date = utils.formatDate(created)
-    const icon = simpleIcons.get(mappedIcons[language.toLowerCase()])
+    const date = utils.formatDate(created.toDate())
+    const icon = simpleIcons.get(mappedIcons[language? language.toLowerCase() : 'javascript'])
 
     const copiedDelay = () => {
         setCopied(true)
