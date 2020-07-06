@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
+import breakpoint from 'styled-components-breakpoint'
 
 const StyledLink = styled.a`
     display: flex;
@@ -21,12 +22,19 @@ const StyledProfileImg = styled.img`
     margin-right: 15px;
 `
 
+const StyledUsername = styled.span`
+    line-height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+`
+
 export default function UserInfo ({ user }) {
     const userFullname = `${user.fullName}`
     return (
         <StyledLink href={user.profileLink}>
             <StyledProfileImg src={user.picture} />
-            <span style={{ lineHeight: '30px' }}>{userFullname}</span>
+            <StyledUsername>{userFullname}</StyledUsername>
         </StyledLink>
     )
 }

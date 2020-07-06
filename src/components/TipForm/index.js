@@ -50,7 +50,7 @@ export default function TipForm () {
     const onSubmit = async ({ title, description }) => {
         try {
             if (!code) {
-                alert('Añade codigo antes de continuar')
+                toast.warning('Añade codigo antes de continuar')
                 return
             }
             toggleIsLoading()
