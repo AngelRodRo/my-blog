@@ -14,10 +14,16 @@ const convertToArray = (snapshots) => {
     return docs
 }
 
+const TIPS_LIMIT = 5
+
 export default {
     async list () {
         const tips = []
-        const tipsSnapshot = convertToArray(await firestore.collection('tips').orderBy('created', 'desc').get())
+        const tipsQuery = await firestore.collection('tips')
+                            .orderBy('created', 'desc')
+                            .limit(TIPS_LIMIT)
+                            .get()
+        const tipsSnapshot = convertToArray(tipsQuery)
         for (const tipDoc of tipsSnapshot) {
             const userDoc = (await firestore.collection('users').doc(tipDoc.uid).get()).data()
             tips.push({

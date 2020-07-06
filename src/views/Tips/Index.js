@@ -3,6 +3,7 @@ import Styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
+import InfiniteScroll from 'react-infinite-scroll-component'
 
 import { toast } from 'react-toastify'
 
@@ -43,17 +44,18 @@ const FloatButton = Styled.div`
     }
 `
 
+const TipsList = ({tips}) => tips.map(tip =>
+    <Tip
+        tip={tip}
+        key={tip.id}
+    />
+)
+
 const Index = ({ toggleIsLoading }) => {
 
     const [tips, setTips] = React.useState([])
     const [localUser, setLocalUser] = React.useState(getUser())
     const [isLogged, setIsLogged] = React.useState(isLoggedIn())
-
-    userDS.inspect(user => {
-        if (user) {
-            setIsLogged(true)
-        }
-    })
 
     React.useEffect(() => {
         const fetchTips = async () => {
@@ -70,12 +72,11 @@ const Index = ({ toggleIsLoading }) => {
         fetchTips()
     }, [])
 
-    const TipsList = () => tips.map(tip =>
-        <Tip
-            tip={tip}
-            key={tip.id}
-        />
-    )
+    userDS.inspect(user => {
+        if (user) {
+            setIsLogged(true)
+        }
+    })
 
     const updateUser = (user) => {
         setUser(user)
@@ -104,7 +105,7 @@ const Index = ({ toggleIsLoading }) => {
                     />
             }
             </InfoContainer>
-            <TipsList />
+            <TipsList tips={tips} />
             {isLogged? <FloatButton onClick={() => navigate('/tips/create')} /> : null}
         </>
     )
