@@ -17,7 +17,7 @@ const convertToArray = (snapshots) => {
 export default {
     async list () {
         const tips = []
-        const tipsSnapshot = convertToArray(await firestore.collection('tips').get())
+        const tipsSnapshot = convertToArray(await firestore.collection('tips').orderBy('created', 'desc').get())
         for (const tipDoc of tipsSnapshot) {
             const userDoc = (await firestore.collection('users').doc(tipDoc.uid).get()).data()
             tips.push({
