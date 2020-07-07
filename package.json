@@ -15,6 +15,7 @@
     "babel-plugin-styled-components": "^1.10.0",
     "firebase": "^7.14.5",
     "firebaseui": "^4.5.0",
+    "formik": "^2.1.4",
     "gatsby": "^2.3.25",
     "gatsby-cli": "^2.12.40",
     "gatsby-image": "^2.0.39",

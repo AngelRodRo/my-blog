@@ -16,11 +16,13 @@ styles.Select = styled.select`
 styles.Input = styled.input`
     margin: 10px 0px;
     padding: 10px;
+    border-color: ${props => props.error? 'red !important' : null }
 `
 
 styles.TextArea = styled.textarea`
     margin: 10px 0px;
     padding: 10px;
+    border-color: ${props => props.error? 'red !important' : null }
 `
 
 styles.Button = styled.button`
