@@ -61,7 +61,9 @@ export default function Tip ({ tip:
                     <Styled.Date>{date}</Styled.Date>
                 </Styled.Details>
                 <Styled.Description>{description}</Styled.Description>
-                <TagList tags={tags}></TagList>
+                <TagList
+                    tags={tags}
+                />
             </Styled.Info>
             <Styled.CodeSection>
                 <SyntaxHighlighter customStyle={{height: '200px', padding: '2em'}} language={language} style={anOldHope} >
