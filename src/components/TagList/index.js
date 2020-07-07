@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-import Tag from '../Tag'
+import Tag from './Tag'
 
 const Container = styled.div`
     display: flex;
