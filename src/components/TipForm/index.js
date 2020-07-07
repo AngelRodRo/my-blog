@@ -39,7 +39,7 @@ export default function TipForm () {
     const initialValues = {
         title: '',
         description: '',
-        lang: 'Javascript',
+        lang: 'javascript',
         code: '',
         tags: [],
     }
@@ -119,14 +119,13 @@ export default function TipForm () {
                         editorProps={{ $blockScrolling: true }}
                     />
                     <div
-                        style={{ margin: '10px 0' }}
+                        style={{ margin: '10px 0', ...(errors.tags? { border : '1px solid red' } : {}) }}
                     >
                         <Select
                             isMulti
                             name="tags"
                             onChange={tags => setFieldValue('tags', tags)}
                             options={selectableTags}
-                            error={errors.tags}
                             className="basic-multi-select"
                             classNamePrefix="select"
                         />
