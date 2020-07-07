@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import Styled from 'styled-components'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { navigate } from 'gatsby'
 import InfiniteScroll from 'react-infinite-scroll-component'
+
+import Loader from 'react-loader-spinner'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 import { toast } from 'react-toastify'
 
@@ -15,6 +18,7 @@ import Login from 'src/components/Login'
 
 import userDS from 'src/datasources/user'
 import tipDS from 'src/datasources/tips'
+
 
 const InfoContainer = Styled.div`
     max-width: 600px;
@@ -53,24 +57,36 @@ const TipsList = ({tips}) => tips.map(tip =>
 
 const Index = ({ toggleIsLoading }) => {
 
-    const [tips, setTips] = React.useState([])
-    const [localUser, setLocalUser] = React.useState(getUser())
-    const [isLogged, setIsLogged] = React.useState(isLoggedIn())
+    const [tips, setTips] = useState([])
+    const [lastTip, setLastTip] = useState(undefined)
+    const [localUser, setLocalUser] = useState(getUser())
+    const [isLogged, setIsLogged] = useState(isLoggedIn())
+    const [isLoadingIL, setIsLoadingIL] = useState(false)
 
-    React.useEffect(() => {
-        const fetchTips = async () => {
-            toggleIsLoading()
-            try {
-                const tips = await tipDS.list()
-                setTips(tips)
-            } catch (e) {
-                console.log(e)
-                toast.error('Error al recuperar los tips, intentelo de nuevo mas tarde')
-            }
-            toggleIsLoading()
-        }
-        fetchTips()
+    useEffect(() => {
+        toggleIsLoading()
+        fetchTips().then(toggleIsLoading)
     }, [])
+
+    const fetchTips = async () => {
+        try {
+            const {tips: newTips, lastTipSnapshot} = await tipDS.list({ offset: lastTip })
+            setLastTip(lastTipSnapshot)
+            setTips([
+                ...tips,
+                ...newTips,
+            ])
+        } catch (e) {
+            console.log(e)
+            toast.error('Error al recuperar los tips, intentelo de nuevo mas tarde')
+        }
+    }
+
+    const addNewTips = async () => {
+        setIsLoadingIL(true)
+        await fetchTips()
+        setIsLoadingIL(false)
+    }
 
     userDS.inspect(user => {
         if (user) {
@@ -105,7 +121,23 @@ const Index = ({ toggleIsLoading }) => {
                     />
             }
             </InfoContainer>
-            <TipsList tips={tips} />
+            <InfiniteScroll
+                dataLength={tips.length}
+                next={addNewTips}
+                loader={ 
+                    <Loader
+                        style={{textAlign: 'center'}}
+                        visible={isLoadingIL}
+                        type="ThreeDots"
+                        color="#164450"
+                        height={50}
+                        width={50}
+                    /> 
+                }
+                hasMore={true}
+            >
+                <TipsList tips={tips} />
+            </InfiniteScroll>
             {isLogged? <FloatButton onClick={() => navigate('/tips/create')} /> : null}
         </>
     )
@@ -116,10 +148,8 @@ Index.propTypes = {
     toggleIsLoading: PropTypes.func,
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        toggleIsLoading: () => dispatch({ type: 'TOGGLE_ISLOADING' }),
-    }
-}
+const mapDispatchToProps = dispatch => ({
+    toggleIsLoading: () => dispatch({ type: 'TOGGLE_ISLOADING' }),
+})
 
 export default connect(null, mapDispatchToProps)(Index)

@@ -31,7 +31,7 @@ class TipsLayout extends React.Component {
                         <Loading
                             loading
                             background="#ffff"
-                            loaderColor="#3498db"
+                            loaderColor="#164450"
                         /> :
                         null
                     }

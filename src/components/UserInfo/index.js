@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import breakpoint from 'styled-components-breakpoint'
 
 const StyledLink = styled.a`
     display: flex;

@@ -14,24 +14,31 @@ const convertToArray = (snapshots) => {
     return docs
 }
 
-const TIPS_LIMIT = 5
+const TIPS_LIMIT = 10
 
 export default {
-    async list () {
+    async list ({ limit = TIPS_LIMIT, offset: lastItem } = {}) {
         const tips = []
-        const tipsQuery = await firestore.collection('tips')
-                            .orderBy('created', 'desc')
-                            .limit(TIPS_LIMIT)
-                            .get()
-        const tipsSnapshot = convertToArray(tipsQuery)
-        for (const tipDoc of tipsSnapshot) {
+        let tipsQuery = firestore.collection('tips')
+                        .orderBy('created', 'desc')
+                        .limit(limit)
+        if (lastItem) {
+            tipsQuery = tipsQuery 
+                        .startAfter(lastItem)
+        }
+        const tipSnapshots = await tipsQuery.get()
+        const tipDocs = convertToArray(tipSnapshots)
+        for (const tipDoc of tipDocs) {
             const userDoc = (await firestore.collection('users').doc(tipDoc.uid).get()).data()
             tips.push({
                 ...tipDoc,
                 user: userDoc,
             })
         }
-        return tips
+        return {
+            tips, 
+            lastTipSnapshot: tipSnapshots.docs[tipSnapshots.docs.length - 1]
+        }
     },
     async create({ title, description, code, language = '', tags = [], uid, }) {
         await firestore.collection('tips').add({
