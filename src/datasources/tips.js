@@ -20,11 +20,21 @@ export default {
     async list ({
         limit = TIPS_LIMIT,
         offset: lastItem,
+        filters = {
+            languages: []
+        }
     } = {}) {
         const tips = []
         let tipsQuery = firestore.collection('tips')
-                        .orderBy('created', 'desc')
+        console.log(filters)
+        if (filters.languages.length > 0) {
+            tipsQuery = tipsQuery
+                            .where('language', 'in', filters.languages)
+        }
+
+        tipsQuery = tipsQuery.orderBy('created', 'desc')
                         .limit(limit)
+
         if (lastItem) {
             tipsQuery = tipsQuery
                         .startAfter(lastItem)

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 
 import AceEditor from 'react-ace'
 import Select from 'react-select'
-import { Formik, Form, Field } from 'formik'
+import { Formik, Field } from 'formik'
 
 import { getUser } from 'src/utils/auth'
 
@@ -23,7 +23,6 @@ import languages from './ace-lngs-installer'
 const capitalize = ([first, ...rest]) =>
     first.toUpperCase() + rest
 
-//TODO: Implement well-built validations
 export default function TipForm () {
 
     const dispatch = useDispatch()
@@ -33,7 +32,7 @@ export default function TipForm () {
 
     const selectableTags = [
         { value: 'snippet', label: 'Snippet' },
-        { value: 'tip', label: 'Tip', },
+        { value: 'tip rapido', label: 'Tip rapido' },
     ]
 
     const initialValues = {
@@ -52,7 +51,10 @@ export default function TipForm () {
                 description,
                 language: lang,
                 code,
-                tags: tags.map(val => val.value),
+                tags: [
+                    ...tags.map(val => val.value),
+                    lang,
+                ],
                 uid: user.uid
             })
             navigate('/tips')

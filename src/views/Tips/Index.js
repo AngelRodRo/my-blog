@@ -13,7 +13,7 @@ import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
 import Tip from 'src/components/Tip'
-import FilterList from 'src/components/Tip/FilterList'
+import TagFilterList from 'src/components/Tip/FilterList'
 import Profile from 'src/components/Profile'
 
 import Login from 'src/components/Login'
@@ -25,7 +25,6 @@ const Container = Styled.div`
     max-width: 650px;
     margin: 0 auto;
 `
-
 const InfoContainer = Styled.div`
     display: flex;
     align-items: center;
@@ -52,6 +51,12 @@ const FloatButton = Styled.div`
     }
 `
 
+const EmptyMessage = Styled.h2`
+    text-align: center;
+    color: white;
+    margin: 40px 0;
+`
+
 const TipsList = ({tips}) => tips.map(tip =>
     <Tip
         tip={tip}
@@ -64,17 +69,26 @@ const Index = ({ toggleIsLoading }) => {
     const [tips, setTips] = useState([])
     const [lastTip, setLastTip] = useState(undefined)
     const [localUser, setLocalUser] = useState(getUser())
+    const [filters, setFilters] = useState({
+        languages: []
+    })
+
+    useEffect(() => {
+        setIsLoadingIL(true)
+        fetchTips({ filters }).then(() => setIsLoadingIL(false))
+    }, [filters])
+
     const [isLogged, setIsLogged] = useState(isLoggedIn())
     const [isLoadingIL, setIsLoadingIL] = useState(false)
 
     useEffect(() => {
         toggleIsLoading()
-        fetchTips().then(toggleIsLoading)
+        fetchTips({ offset: lastTip }).then(toggleIsLoading)
     }, [])
 
-    const fetchTips = async () => {
+    const fetchTips = async ({ offset, filters }) => {
         try {
-            const {tips: newTips, lastTipSnapshot} = await tipDS.list({ offset: lastTip })
+            const {tips: newTips, lastTipSnapshot} = await tipDS.list({ offset, filters })
             setLastTip(lastTipSnapshot)
             setTips([
                 ...tips,
@@ -94,7 +108,7 @@ const Index = ({ toggleIsLoading }) => {
 
     const addNewTips = async () => {
         setIsLoadingIL(true)
-        await fetchTips()
+        await fetchTips({ offset: lastTip, filters })
         setIsLoadingIL(false)
     }
 
@@ -111,8 +125,24 @@ const Index = ({ toggleIsLoading }) => {
         toggleIsLoading()
     }
 
-    const onSelect = () => {
+    const onTagSelect = async (tag) => {
+        const filterTags = [...filters.languages]
+        const idx = filterTags.findIndex(filterTag => filterTag === tag)
 
+        let newFilters
+
+        if (idx >= 0) {
+            filterTags.splice(idx, 1)
+        } else {
+            filterTags.push(tag)
+        }
+
+        newFilters = {
+            languages: filterTags
+        }
+
+        setTips([])
+        setFilters(newFilters)
     }
 
     return (
@@ -129,26 +159,29 @@ const Index = ({ toggleIsLoading }) => {
                     />
             }
             </InfoContainer>
-            <FilterList
-                onSelect={onSelect}
+            <TagFilterList
+                onSelect={onTagSelect}
             />
             <InfiniteScroll
                 dataLength={tips.length}
                 next={addNewTips}
-                loader={
-                    <Loader
-                        style={{textAlign: 'center'}}
-                        visible={isLoadingIL}
-                        type="ThreeDots"
-                        color="#164450"
-                        height={50}
-                        width={50}
-                    />
-                }
                 hasMore={true}
             >
                 <TipsList tips={tips} />
             </InfiniteScroll>
+            <Loader
+                style={{textAlign: 'center'}}
+                visible={isLoadingIL}
+                type="ThreeDots"
+                color="#164450"
+                height={50}
+                width={50}
+            />
+            {tips.length === 0&&!isLoadingIL ?
+                <EmptyMessage>
+                    No hay tips disponibles !!
+                </EmptyMessage> : null
+            }
             {isLogged? <FloatButton onClick={() => navigate('/tips/create')} /> : null}
         </Container>
     )
