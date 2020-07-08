@@ -1,31 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import Styled from 'styled-components'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { navigate } from 'gatsby'
 import InfiniteScroll from 'react-infinite-scroll-component'
+
+import { connect } from 'react-redux'
+import { navigate } from 'gatsby'
+import { toast } from 'react-toastify'
 
 import Loader from 'react-loader-spinner'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
-import { toast } from 'react-toastify'
-
 import { setUser, getUser, isLoggedIn, logout } from 'src/utils/auth'
 
 import Tip from 'src/components/Tip'
+import FilterList from 'src/components/Tip/FilterList'
 import Profile from 'src/components/Profile'
+
 import Login from 'src/components/Login'
 
 import userDS from 'src/datasources/user'
 import tipDS from 'src/datasources/tips'
 
+const Container = Styled.div`
+    max-width: 650px;
+    margin: 0 auto;
+`
 
 const InfoContainer = Styled.div`
-    max-width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 auto;
 `
 const FloatButton = Styled.div`
     position: fixed;
@@ -82,17 +86,17 @@ const Index = ({ toggleIsLoading }) => {
         }
     }
 
-    const addNewTips = async () => {
-        setIsLoadingIL(true)
-        await fetchTips()
-        setIsLoadingIL(false)
-    }
-
     userDS.inspect(user => {
         if (user) {
             setIsLogged(true)
         }
     })
+
+    const addNewTips = async () => {
+        setIsLoadingIL(true)
+        await fetchTips()
+        setIsLoadingIL(false)
+    }
 
     const updateUser = (user) => {
         setUser(user)
@@ -107,8 +111,12 @@ const Index = ({ toggleIsLoading }) => {
         toggleIsLoading()
     }
 
+    const onSelect = () => {
+
+    }
+
     return (
-        <>
+        <Container>
             <InfoContainer>
             {
                 !isLogged?
@@ -121,10 +129,13 @@ const Index = ({ toggleIsLoading }) => {
                     />
             }
             </InfoContainer>
+            <FilterList
+                onSelect={onSelect}
+            />
             <InfiniteScroll
                 dataLength={tips.length}
                 next={addNewTips}
-                loader={ 
+                loader={
                     <Loader
                         style={{textAlign: 'center'}}
                         visible={isLoadingIL}
@@ -132,14 +143,14 @@ const Index = ({ toggleIsLoading }) => {
                         color="#164450"
                         height={50}
                         width={50}
-                    /> 
+                    />
                 }
                 hasMore={true}
             >
                 <TipsList tips={tips} />
             </InfiniteScroll>
             {isLogged? <FloatButton onClick={() => navigate('/tips/create')} /> : null}
-        </>
+        </Container>
     )
 }
 
