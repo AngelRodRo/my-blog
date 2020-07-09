@@ -38,14 +38,6 @@ const languages = [
 ]
 
 const defaultTags = [
-    {
-        value: 'Snippet',
-        selected: false
-    },
-    {
-        value: 'Tip',
-        selected: false,
-    },
     ...languages.map(lang => ({
         value: capitalize(lang),
         selected: false,
